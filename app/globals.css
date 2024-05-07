@@ -7,7 +7,11 @@ background-color: slategray;
 display: flex;
 justify-content: center;
 align-items: center;
-
+width: 100%;
+}body {
+  margin: auto;
+  padding: auto;
+  width: 100%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,10 +20,7 @@ background-color: blue;
   }
 }
 
-body {
-  margin: 0;
-  padding: auto;
-}
+
 
 @layer utilities {
   .text-balance {
