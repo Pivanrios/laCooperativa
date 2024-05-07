@@ -29,3 +29,17 @@ export const orders = [
         total: 9
     }
 ]
+
+export const reviews = [
+    {
+        author: "peter",
+        rate: 1,
+        content: "very good"
+    }
+]
+export const dishes = [
+    {
+        name: "lasagna",
+        price: 9
+    }
+]
