@@ -16,8 +16,7 @@ function About() {
                         opciones y crear un menu variado que satisfaga los gustos de todos.
                     </p>
                 </span>
-            </div>
-            
+            </div> 
         </section>
         <section className='p-2'>
             <div className='flex  flex-col items-center px-3 md:px-10 py-5 bg-yellow-400 rounded-lg'>
@@ -27,7 +26,7 @@ function About() {
                         Entregamos tu comida casera preparada por companeros de trabajo, 
                         en el breakroom de preferencia. <br/>
                         Solo tienes que ordenar por medio de la encuesta en nuestro 
-                        grupo de whatsapp o por mensaje al numero (646) 123-2222.<br/>
+                        grupo de whatsapp o por mensaje al numero 646 123-2222.<br/>
                         Mandas tu comprobante de transferencia por zelle o bbva.
                     </p>
                     <img src='../images/lasagnaCompleta.jpeg' alt='comida' width={200} className=' rounded-full'/>
