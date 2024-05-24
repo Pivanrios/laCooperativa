@@ -1,6 +1,7 @@
 import React from 'react'
 import { dishes } from '@/public/data'
-import ProductPreview from '@/app/components/ProductPreview'
+import ProductPreview from '@/src/components/ProductPreview'
+
 
 function Platillos() {
   return (

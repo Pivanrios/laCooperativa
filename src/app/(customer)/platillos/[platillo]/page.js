@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import { platillo } from '@/public/data'
-import ReviewsGallery from '@/app/components/ReviewsGallery';
-import ReviewForm from '@/app/components/ReviewForm';
+
+import ReviewsGallery from '@/src/components/ReviewsGallery';
+import ReviewForm from '@/src/components/ReviewForm';
 
 
 function Page({params}) {

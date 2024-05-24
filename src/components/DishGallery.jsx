@@ -1,9 +1,12 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+//componetns
 import ProductPreview from './ProductPreview'
 import Link from 'next/link' //Link to send to other page
+//data base
 import {getDocs, Docs, collection, data} from 'firebase/firestore'
 import { db } from '@/firebaseconfig'
+
 
 
 function DishGallery({dishes}) {

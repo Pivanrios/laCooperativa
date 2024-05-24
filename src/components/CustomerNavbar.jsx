@@ -9,11 +9,11 @@ function CustomerNavbar() {
         <div className='container flex flex-row  justify-between px-5 py-2 bg-yellow-500'>
             <span>LaCooperativa</span>
             <nav className='flex flex-row gap-1'>
-                <Link href={"/customer/about-us"}
+                <Link href={"/about-us"}
                       className='hidden sm:list-item'>About</Link>
-                <Link href={"/customer"}
+                <Link href={"/"}
                       className='hidden sm:list-item'>Home</Link>
-                <Link href={"/customer/platillos"}
+                <Link href={"/platillos"}
                       className='hidden sm:list-item'>Platillos</Link>
             </nav>
             <div className='burger sm:hidden'
@@ -23,11 +23,11 @@ function CustomerNavbar() {
             </div>
             {open && (
               <div className='sm:hidden menu flex flex-col absolute bg-yellow-500 p-2'>
-                <Link href={"/customer/about-us"}
+                <Link href={"/about-us"}
                       className=''>About</Link>
-                <Link href={"/customer"}
+                <Link href={"/"}
                       className=''>Home</Link>
-                <Link href={"/customer/platillos"}
+                <Link href={"/platillos"}
                       className=''>Platillos</Link>
               </div>
             )

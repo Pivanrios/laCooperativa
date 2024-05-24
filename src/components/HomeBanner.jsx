@@ -10,7 +10,7 @@ function HomeBanner() {
           <span className='text-xs md:text-md text-gray-500'>Comida casera at your service</span>
         </h1>
         <p className='px-2 pt-3 pb-10 self-end text-xs md:text-lg '>Preparamos un menu semanal dentro de amazon para empleados que no tienen tiempo de cocinar... </p>
-        <Link href="/customer/about-us" className='btn flex self-end justify-center content-center '>Learn more</Link>   
+        <Link href="/about-us" className='btn flex self-end justify-center content-center '>Learn more</Link>   
       </div>
     </div>
   )
