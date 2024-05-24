@@ -1,5 +1,6 @@
+import Navbar from '@/src/components/Navbar'
 import React from 'react'
-import Navbar from '../components/navbar'
+
 
 
 function AdminLayout({children}) {
