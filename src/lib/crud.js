@@ -8,9 +8,10 @@ export async function getDishes(){
         const dishes = []
         const res = await getDocs(coleccion);
         res.forEach((dish)=>{
-            dishes.push(dish.data());
+            let withId = dish.data();
+            withId.id = dish.id;
+            dishes.push(withId);
         });
-        console.log("productos:",dishes);
         return dishes;
     } catch (error) {
         console.error(error);
