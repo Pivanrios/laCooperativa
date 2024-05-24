@@ -1,9 +1,11 @@
 import React from 'react'
-import { dishes } from '@/public/data'
+//components
 import ProductPreview from '@/src/components/ProductPreview'
+//functions
+import { getDishes } from '@/src/lib/crud'
 
-
-function Platillos() {
+async function Platillos() {
+  const dishes = await getDishes();
   return (
     <div className='flex flex-col items-center px-3 py-5 bg-yellow-500 gap-2'>
         <h2 className='text-4xl font-bold'>Platillos</h2>
