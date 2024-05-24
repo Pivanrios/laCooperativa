@@ -1,5 +1,5 @@
-import { reviews } from "@/public/data"
 
+const reviews = [];
 
 function ReviewsGallery() {
   return (

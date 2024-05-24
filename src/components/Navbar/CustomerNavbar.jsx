@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import Login from './Login/Login';
 
 function CustomerNavbar() {
   const [open, setOpen] = useState(false);
@@ -15,6 +16,7 @@ function CustomerNavbar() {
                       className='hidden sm:list-item'>Home</Link>
                 <Link href={"/platillos"}
                       className='hidden sm:list-item'>Platillos</Link>
+                  <Login/>
             </nav>
             <div className='burger sm:hidden'
                   onClick={()=>{setOpen(!open)}}>
