@@ -7,8 +7,6 @@ import Link from 'next/link' //Link to send to other page
 import {getDocs, Docs, collection, data} from 'firebase/firestore'
 import { db } from '@/firebaseconfig'
 
-
-
 function DishGallery({dishes}) {
   const [seleccion, setSeleccion] = useState([]);
   //const seleccion = dishes.slice(0,3) //here were gonna slice depending on the width of the screen, add breakpoints
@@ -33,8 +31,6 @@ function DishGallery({dishes}) {
     }
     setData();
   },[]);
-
-
   return (
     <div className='container flex flex-col items-center bg-yellow-500 py-3 px-2 md:py-5 px-10 gap-1'>{//this is the section were we display our dishes 
       }<h3 className='text-3xl font-bold'>Dishes</h3>
@@ -43,7 +39,7 @@ function DishGallery({dishes}) {
         return <ProductPreview d={d} key={d.id}/>
       })}
       </div>
-      <Link href={"/customer/platillos"} className='self-end'>mas-----</Link>
+      <Link href={"/platillos"} className='self-end'>mas-----</Link>
     </div>
   )
 }
