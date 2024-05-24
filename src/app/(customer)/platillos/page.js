@@ -1,6 +1,6 @@
 import React from 'react'
 //components
-import ProductPreview from '@/src/components/ProductPreview'
+import ProductPreview from '@/src/components/DishSection/ProductPreview'
 //functions
 import { getDishes } from '@/src/lib/crud'
 

@@ -2,7 +2,7 @@
 import ProductPreview from './ProductPreview'
 import Link from 'next/link' //Link to send to other page
 //function
-import { getDishes } from '../lib/crud'
+import { getDishes } from '@/src/lib/crud';
 
 async function DishGallery() {
 
