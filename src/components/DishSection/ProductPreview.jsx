@@ -8,7 +8,6 @@ function ProductPreview({d}) {
             <img alt={d.name} src={d.imagen} className=' w-28'></img>
             <ol className='container flex flex-col justify-between'>
               <h4 className='text-lg font-bold '>{d.name}</h4>
-              <p className='text-sm'>{d.ingredientes}</p>
               <p className='self-end'>${d.price}.00</p>
             </ol>
         </div>
