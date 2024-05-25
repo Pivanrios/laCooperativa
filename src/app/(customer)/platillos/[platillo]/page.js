@@ -1,16 +1,18 @@
-'use client'
-import React, { useState } from 'react'
 
+import React from 'react'
+//components
 import ReviewsGallery from '@/src/components/ReviewsGallery';
 import ReviewForm from '@/src/components/ReviewForm';
+//function
+import { getDish } from '@/src/lib/crud';
 
-
-function Page({params}) {
-  const [login, setLogin] = useState(true);
+async function Page({params}) {
+  const login = false;
   //obtenemos el codigo dinamico
- 
+  
   //llamamos a nuestra base de datos
-
+  const dish = await getDish(params.platillo);
+  console.log("dish", dish)
 
   return (
     <div className='flex flex-row justify-between px-3 md:px-10 bg-yellow-500 overflow-auto'>
