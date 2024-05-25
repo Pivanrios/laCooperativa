@@ -5,6 +5,7 @@ import ReviewsGallery from '@/src/components/ReviewsGallery';
 import ReviewForm from '@/src/components/ReviewForm';
 //function
 import { getDish } from '@/src/lib/crud';
+import SingleProduct from '@/src/components/SingleProduct/SingleProduct';
 
 async function Page({params}) {
   const login = false;
@@ -12,21 +13,14 @@ async function Page({params}) {
   
   //llamamos a nuestra base de datos
   const dish = await getDish(params.platillo);
-  console.log("dish", dish)
 
   return (
-    <div className='flex flex-row justify-between px-3 md:px-10 bg-yellow-500 overflow-auto'>
+    <div className='flex flex-row justify-between px-3 md:px-10 bg-yellow-500 overflow-auto md:mx-14 gap-1'>
       <button>D</button>
-      <div className='flex flex-col bg-yellow-400 p-10'>
-        <h3 className='text-2xl md:text-4xl font-bold'>{params.platillo}</h3>
-        
-        
+      <div className='flex flex-col bg-yellow-400 p-10 gap-2'>
+        <SingleProduct dish={dish}/>
+        {login && <ReviewForm/>}
         <ReviewsGallery/>
-        {login && (
-          <>
-          <ReviewForm/>
-          </>
-        )}
       </div>
       <button>L</button>
     </div>
