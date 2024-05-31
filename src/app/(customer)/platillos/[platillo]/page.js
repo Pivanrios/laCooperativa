@@ -6,6 +6,7 @@ import ReviewForm from '@/src/components/ReviewForm';
 //function
 import { getDish } from '@/src/lib/crud';
 import SingleProduct from '@/src/components/SingleProduct/SingleProduct';
+import DishGallery from '@/src/components/DishSection/DishGallery';
 
 async function Page({params}) {
   const login = false;
@@ -21,6 +22,7 @@ async function Page({params}) {
         <SingleProduct dish={dish}/>
         {login && <ReviewForm/>}
         <ReviewsGallery/>
+        <DishGallery title={'Related Dishes'}/>
       </div>
       <button>L</button>
     </div>

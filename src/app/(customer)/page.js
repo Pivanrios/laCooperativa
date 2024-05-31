@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <HomeBanner/>
-      <DishGallery/>
+      <DishGallery title={'Dishes'}/>
       <RegisterForm/>
       <ReviewsGallery/>
     </div>
