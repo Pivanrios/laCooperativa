@@ -1,5 +1,5 @@
 import React from 'react'
-import { orders } from '@/public/data'
+
 
 function Admin() {
   return (
