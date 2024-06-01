@@ -1,5 +1,5 @@
 import { db } from "@/firebaseconfig";
-import { collection, getDoc, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDoc, getDocs, addDoc, doc } from "firebase/firestore";
 
 const coleccion = collection(db, "productos");
 //get all dishes 
@@ -8,18 +8,21 @@ export async function getDishes(){
         const dishes = []
         const res = await getDocs(coleccion);
         res.forEach((dish)=>{
-            dishes.push(dish.data());
+            let withId = dish.data();
+            withId.id = dish.id;
+            dishes.push(withId);
         });
-        console.log("productos:",dishes);
         return dishes;
     } catch (error) {
         console.error(error);
     }
 }
 //getSingle dish
-export async function getDish({dishId}){
+export async function getDish(dishId){
     try {
-        console.log("Getting Dish");
+        console.log("Getting Dish",dishId);
+        const dish = await getDoc(doc(db, "productos", dishId));
+        return dish.data();
     } catch (error) {
         console.error(error)
     }

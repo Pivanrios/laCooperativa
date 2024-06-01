@@ -10,7 +10,7 @@ function Footer() {
                 <a href='https://chat.whatsapp.com/I5vg82rHUSj3EUFToM6gtq'><div id='whatsapp'></div></a>
                 <a href='https://www.linkedin.com/in/pivanrios/'><div id='linkedin'></div></a>
             </div>
-            <span className='font-gray opacity-20'>copy right © laCooperativa all rights reserved</span>
+            <span className='font-gray opacity-20 text-xs'>copy right © laCooperativa all rights reserved</span>
         </div>
     </section>
   )

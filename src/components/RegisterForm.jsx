@@ -8,16 +8,16 @@ function RegisterForm() {
         <h3 className='text-2xl font-bold'>Register</h3>
         <p> Register with your email to receive cupons with discounts and add reviews to our dishes. </p>
         <form action="" className='container flex flex-col p-3 gap-1' id='register-form'>
-          <label>Email: <input type='text' /> </label>
-          <label>Password: <input type="text" /></label>
-          <label>Company: 
-            <input list="companies" />
-            <datalist id='companies'>
-              <option value={'SAN3'}/>
-              <option value={'SAN5'}/>
-            </datalist>
+          <label>Email: <input type='text' required/> </label>
+          <label>Password: <input type="text" required/></label>
+          <label for='dropdown'>Company: 
+            <select id="dropdown" name="dropdown"
+                    className="w-32">
+              <option value={'SAN3'}>SAN3</option>
+              <option value={'SAN5'}>SAN5</option>
+            </select>
           </label>
-          <label> Turno:
+          <label> Turno: 
             <label>Day
               <input type="radio" name="shift" id="option1" value={'Day'}/>
             </label>

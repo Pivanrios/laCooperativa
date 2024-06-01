@@ -10,6 +10,7 @@ export default function Navbar() {
             <Link href={"/admin/products"}>Products</Link>
             <Link href={"/admin/customers"}>Customers</Link>
             <Link href={"/admin/sales"}>Sales</Link>
+            <Link href={'/admin/cupons'}>Cupons</Link>
         </nav>
         <Link href={"/"}>back</Link>
     </header>
