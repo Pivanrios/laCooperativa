@@ -1,7 +1,26 @@
+'use client'
+import { getDish } from '@/src/lib/crud';
 import Image from 'next/image'
-import React from 'react'
+import { useEffect, useState } from 'react';
 
-function SingleProduct({dish}) {
+function SingleProduct({dishId}) {
+  const [dish, setDish] = useState({});
+  const [ingredientes, setIngredientes] = useState([]);
+  //-------
+  useEffect(()=>{
+    const setData = async ()=>{
+      try {
+        console.log("setting data...")
+        const res = await getDish(dishId);
+        console.log(res.ingredientes);
+        setDish(res);
+        setIngredientes(res.ingredientes);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    setData();
+  },[]);
   return (
     <div className='flex flex-col items-center '>
         <h2 className='text-3xl font-bold'>{dish.name}</h2>
@@ -12,9 +31,11 @@ function SingleProduct({dish}) {
                      explicabo eaque exercitationem illo voluptatibus obcaecati fuga odit? Doloribus 
                      officia maiores at dolor earum odio tempore id praesentium suscipit expedita?</p>
                 <ul><strong>Ingredintes:</strong>
-                    {dish.ingredientes.map((e)=>(<li className=' list-disc mx-7'>{e}</li>))}
+                    {ingredientes.map((e)=>(<li>{e}</li>))
+                    }
                 </ul>
-                <p>Price: ${dish.price}.00</p>
+                <p><strong>Complemento:</strong></p>
+                <p><strong>Price:</strong>${dish.price}.00</p>
             </div>
         </span>
     </div>
