@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 function Login() {
-    const [login, setLogin] = useState(false);
+    const [login, setLogin] = useState(true);
     
     return (
         <div>
@@ -13,7 +13,7 @@ function Login() {
                             <Link href={"/cupons"}>Cupons</Link>
                         </div>)
             }
-            {!login && <button onClick={()=>{setLogin(true)}}>Login</button>}
+            {!login && <Link href={"/login"}>Login</Link>}
         </div>
     )
 }
