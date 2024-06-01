@@ -8,7 +8,7 @@ function Login() {
     
     return (
         <div>
-            {login &&   (<div className="flex flex-row gap-1">
+            {login &&   (<div className="flex flex-col sm:flex-row gap-1">
                             <button onClick={()=>{setLogin(false)}}>Logout</button>
                             <Link href={"/cupons"}>Cupons</Link>
                         </div>)
