@@ -1,16 +1,25 @@
 'use client'
 //firebase functionss
 import { auth } from "@/firebaseconfig";
+import { useAuth } from "@/src/context/AuthContext";
 import { signOut } from "firebase/auth";
 //next componetns
 import Link from "next/link";
 //react hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Login() {
-    const [login, setLogin] = useState(true);
+    //states
+    const [login, setLogin] = useState(false);
+    const {currentUser} = useAuth();
     //
-
+    useEffect(()=>{
+        if(currentUser){
+            setLogin(true);
+        }else{
+            setLogin(false);
+        }
+    },[currentUser]);
     //logOut button
     const handleSubmit = ()=>{
         console.log("logging out")

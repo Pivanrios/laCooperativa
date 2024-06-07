@@ -30,14 +30,6 @@ export default function SignIn() {
                 console.error(error)
             }
     }
-    //this is temporal
-    useEffect(() => {
-        if (!currentUser) {
-        console.log(currentUser);
-        }else{
-            console.log("currentUser:",currentUser)
-        }
-    }, [currentUser]);
     return (
         <div className="flex flex-col items-center">
         <h2 className=" text-2xl sm:text-4xl font-bold">Sign In</h2>
