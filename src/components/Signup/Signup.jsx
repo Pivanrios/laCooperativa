@@ -13,7 +13,7 @@ function Signup() {
           <form action={signUpUser} className='container flex flex-col p-3 gap-1' id='register-form'>
             <label>Username: <input type="text" name="username" id="username" required className="w-full"/> </label>
             <label>Email: <input type='text' required className="w-full" name="email"/> </label>
-            <label>Password: <input type="text" required className="w-full" name="password"/></label>
+            <label>Password: <input type="password" required className="w-full" name="password"/></label>
             <label for='dropdown'>Company: 
               <select id="dropdown" name="company"
                       className="w-full ">
