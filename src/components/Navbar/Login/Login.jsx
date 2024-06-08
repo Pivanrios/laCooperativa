@@ -7,11 +7,13 @@ import { signOut } from "firebase/auth";
 import Link from "next/link";
 //react hooks
 import { useEffect, useState } from "react";
+import LinkItem from "../Links/LinkItem";
 
-function Login() {
+function Login({setOpen}) {
     //states
     const [login, setLogin] = useState(false);
     const {currentUser} = useAuth();
+    const cupons = {title: "Cupons", path: '/cupons'} 
     //
     useEffect(()=>{
         if(currentUser){
@@ -29,11 +31,15 @@ function Login() {
     return (
         <div>
             {login &&   (<div className="flex flex-col sm:flex-row gap-1">
-                            <Link href={"/cupons"}>Cupons</Link>
-                            <button onClick={handleSubmit}>Logout</button>
+                            <LinkItem setOpen={setOpen} item={cupons}/>
+                            <button onClick={handleSubmit}
+                                    className="px-3 bg-red-800 text-white rounded-full"
+                                    >Logout</button>
                         </div>)
             }
-            {!login && <Link href={"/login"}>Login</Link>}
+            {!login && <Link href={"/login"} 
+                            onClick={()=>setOpen(prev=> !prev)}
+                            className="px-3 py-1 rounded-full forced-colors:appearance-auto bg-green-700 text-white">Login</Link>}
         </div>
     )
 }
