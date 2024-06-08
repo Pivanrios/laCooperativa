@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 
 
 
-function ReviewsGallery() {
+function ReviewsGallery({productId}) {
   const [reviews, setReviews] = useState([]);
 
   useEffect(()=>{
     const setData = async ()=>{
       try {
         console.log("getting reviews...")
-        const res = await getReviews("UNWak3Y4yXx2AIWCetQC");
+        const res = await getReviews(productId);
         setReviews(res);
       } catch (error) {
         console.error(error);
@@ -26,7 +26,7 @@ function ReviewsGallery() {
         <div className=" flex flex-row p-2 gap-2 overflow-hidden">
           {reviews.map((r)=>{
             return (
-              <div key={crypto.randomUUID} className=" flex flex-col bg-yellow-400 p-2" id="review">
+              <div key={crypto.randomUUID} className=" flex flex-col bg-yellow-400 p-2 w-full " id="review">
                 <span><p>{r.auth}</p><p>{r.rating}</p></span>
                 <p>{r.reviewText}</p>
               </div>

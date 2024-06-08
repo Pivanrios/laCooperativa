@@ -15,7 +15,7 @@ async function Page({params}) {
         <SingleProduct dishId={params.platillo}/>        
         <DishGallery title={'Related Dishes'}/>
         <ReviewForm productId={params.platillo}/>
-        <ReviewsGallery/>
+        <ReviewsGallery productId={params.platillo}/>
       </div>
     </div>
   )
