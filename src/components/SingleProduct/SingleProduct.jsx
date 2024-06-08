@@ -31,7 +31,7 @@ function SingleProduct({dishId}) {
                      explicabo eaque exercitationem illo voluptatibus obcaecati fuga odit? Doloribus 
                      officia maiores at dolor earum odio tempore id praesentium suscipit expedita?</p>
                 <ul><strong>Ingredintes:</strong>
-                    {ingredientes.map((e)=>(<li>{e}</li>))
+                    {ingredientes.map((e)=>(<li key={e}>{e}</li>))
                     }
                 </ul>
                 <p><strong>Complemento:</strong></p>
