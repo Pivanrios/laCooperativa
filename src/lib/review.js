@@ -10,7 +10,7 @@ export async function getReviews(productId){
         res.forEach((review)=>{
             reviews.push(review.data());
         })
-        console.log("response", reviews);
+        //console.log("response", reviews);
     } catch (error) {
         console.error(error);
     }
