@@ -1,6 +1,6 @@
 'use client'
 //react hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 //context
 import { useAuth } from "@/src/context/AuthContext";
 //next functions
@@ -13,7 +13,7 @@ export default function SignIn() {
     const [password, setPass] = useState("");
     const [error, setError] = useState("");
     //import functions from context
-    const { signIn, currentUser } = useAuth();
+    const { signIn } = useAuth();
     //router to change route on website
     const router = useRouter();
     //funtcion
@@ -21,9 +21,9 @@ export default function SignIn() {
         e.preventDefault();
             try {
                 setError("");
-                console.log("trying")
+                console.log("Signing In...")
                 const res = await signIn(email, password);
-                console.log("response:", res.user.email)
+                console.log("successfully sign in");
                 router.push('/')
             }catch (error) {
                 setError("Failed to sign in");
