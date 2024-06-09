@@ -5,13 +5,13 @@ import {getAuth} from 'firebase/auth'
 
 
 const firebaseConfig = {
-    apiKey: process.env.API_KEY,
-    authDomain: process.env.AUTH_DOM,
-    projectId: process.env.PROJECT_ID,
-    storageBucket: process.env.STORAGE_BUCKET,
-    messagingSenderId: process.env.MESSAGING_ID ,
-    appId: process.env.APP_ID,
-    measurementId: process.env.MEASURE_ID
+  apiKey: "AIzaSyAuUdm1s_PLC6JcpeyajBXDcZfDePG5cBI",
+  authDomain: "la-cooperativa-15c15.firebaseapp.com",
+  projectId: "la-cooperativa-15c15",
+  storageBucket: "la-cooperativa-15c15.appspot.com",
+  messagingSenderId: "672855187407",
+  appId: "1:672855187407:web:44b5a3ba0cf5381e7a7cba",
+  measurementId: "G-8FBKMKR430"
   };
 
 export const app = initializeApp(firebaseConfig);
