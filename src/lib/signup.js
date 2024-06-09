@@ -14,7 +14,7 @@ export async function signUpUser(formData){
       //create user with email address to our firebase authentication service
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
       user = userCredentials.user
-      console.log("succesfully created...", user);  
+      console.log("succesfully created user...");  
       //set username
       await updateProfile(user, {
         displayName: username,
