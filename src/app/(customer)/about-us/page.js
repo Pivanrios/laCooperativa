@@ -38,7 +38,8 @@ function About() {
         <section className='p-2'>
             <div className='flex  flex-col items-center px-3 md:px-10 py-5 bg-yellow-400 rounded-lg'>
                 <h3 className='text-3xl md:text-5xl font-bold'>How?</h3>
-                <span className='flex gap-2'>
+                <span className='flex flex-col sm:flex-row  items-center gap-2'>
+                <img src='/icons/logo.png' alt='comida' width={200} className=' rounded-full'/>
                     <p>
                         Entregamos tu comida casera preparada por companeros de trabajo, 
                         en el breakroom de preferencia. <br/>
@@ -46,7 +47,6 @@ function About() {
                         grupo de whatsapp o por mensaje al numero 646 123-2222.<br/>
                         Mandas tu comprobante de transferencia por zelle o bbva.
                     </p>
-                    <img src='' alt='comida' width={200} className=' rounded-full'/>
                 </span>
             </div>
         </section>
