@@ -1,8 +1,23 @@
-
+'use client'
+//function to register user on db
 import { signUpUser } from "@/src/lib/signup"
+//react hooks
+import { useEffect, useState } from "react"
 
 function Signup() {
-  
+  //add some states
+  const [password, setPassword] = useState(""); //password
+  const [passVer, setPassVer] = useState(""); //password verification
+  const [valid, setValid] = useState(false); // bool that allows to continue
+  //use effect
+  useEffect(()=>{
+    if(password === passVer){
+      //if passwords are the same, the submit button will appear.
+      setValid(true);
+    }else{
+      setValid(false);
+    }
+  },[passVer]);
   return (
     <section className='container flex flex-col items-center gap-1 p-2' >
       <div id='register-wrapper'
@@ -11,28 +26,43 @@ function Signup() {
         <p className=" "> Register with your email to receive cupons with discounts and add reviews to our dishes. </p>
         <div>
           <form action={signUpUser} className='container flex flex-col p-3 gap-1' id='register-form'>
-            <label>Username: <input type="text" name="username" id="username" required className="w-full"/> </label>
-            <label>Email: <input type='text' required className="w-full" name="email"/> </label>
-            <label>Password: <input type="password" required className="w-full" name="password"/></label>
-            <label for='dropdown'>Company: 
-              <select id="dropdown" name="company"
-                      className="w-full ">
-                <option value={'SAN3'} name='company'>SAN3</option>
-                <option value={'SAN5'} name='company'>SAN5</option>
-              </select>
+            <label>Username: 
+              <input type="text" 
+                      name="username" 
+                      id="username" 
+                      required 
+                      className="w-full" 
+                      placeholder="example"/> 
             </label>
-            <label for="shift" className=" flex flex-col justify-between"> Turno:
-              <span className="flex gap-5">                  
-                <label>Day
-                  <input type="radio" name="shift" id="option1" value={'Day'}/>
-                </label>
-                <label>Nigth
-                  <input type="radio" name="shift" id="option2" value={'Nigth'}/>
-                </label>
-              </span>
+            <label>EmailAdr: 
+              <input type='text' 
+                      name="email"
+                      id="email" 
+                      required 
+                      className="w-full"  
+                      placeholder="email@dress.com"/>
             </label>
-            <button className='btn self-center'>submit</button>
-          </form>
+            <label>Password: 
+              <input type="password" 
+                      required 
+                      className="w-full" 
+                      name="password" 
+                      id="password"
+                      placeholder="more than 6 letters"
+                      onChange={(e)=>setPassword(e.target.value)}/>
+            </label>
+            <label>Password: 
+              <input type="password" 
+                      required 
+                      className="w-full" 
+                      name="password-verify" 
+                      id="password-veryfy"
+                      placeholder="same as arriba ^"
+                      onChange={(e)=>setPassVer(e.target.value)}/>
+            </label>
+            {//if valid is true show the submit button
+            valid && <button className='btn self-center'>submit</button>
+          }</form>
         </div>
       </div>
     </section>
