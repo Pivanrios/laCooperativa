@@ -1,40 +1,21 @@
-'use client'
+
 import Link from 'next/link'
-import React, { useState } from 'react'
-import Login from './Login/Login';
+import Image from 'next/image';
+import Links from './Links/Links';
 
 function CustomerNavbar() {
-  const [open, setOpen] = useState(false);
   return (
     <header>
         <div className='container flex flex-row  justify-between px-5 py-2 bg-yellow-500'>
-            <span>LaCooperativa</span>
-            <nav className='flex flex-row gap-1'>
-                <Link href={"/about-us"}
-                      className='hidden sm:list-item'>About</Link>
-                <Link href={"/"}
-                      className='hidden sm:list-item'>Home</Link>
-                <Link href={"/platillos"}
-                      className='hidden sm:list-item'>Platillos</Link>
-                  <Login/>
-            </nav>
-            <div className='burger sm:hidden'
-                  onClick={()=>{setOpen(!open)}}>
-              <div>-</div>
-              <div>-</div>
-            </div>
-            {open && (
-              <div className='sm:hidden menu flex flex-col absolute bg-yellow-500 p-2'>
-                <Link href={"/about-us"}
-                      className=''>About</Link>
-                <Link href={"/"}
-                      className=''>Home</Link>
-                <Link href={"/platillos"}
-                      className=''>Platillos</Link>
-              </div>
-            )
-
-            }
+            <Link href={"/"}><span className='font-bold flex flex-row gap-1 items-center'>
+                                    <Image src={'/icons/logo.png'}
+                                    width={30}
+                                    height={30}
+                                    className='hidden sm:list-item rounded-full'/>
+                                    LaCooperativa
+                              </span>
+            </Link>
+            <Links/>
         </div>
     </header>
   )

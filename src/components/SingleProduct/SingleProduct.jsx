@@ -12,9 +12,10 @@ function SingleProduct({dishId}) {
       try {
         console.log("setting data...")
         const res = await getDish(dishId);
-        console.log(res.ingredientes);
+        console.log("setting ingredientes",res.ingredientes);
         setDish(res);
         setIngredientes(res.ingredientes);
+        console.log("succesfully set data")
       } catch (error) {
         console.error(error);
       }
@@ -31,7 +32,7 @@ function SingleProduct({dishId}) {
                      explicabo eaque exercitationem illo voluptatibus obcaecati fuga odit? Doloribus 
                      officia maiores at dolor earum odio tempore id praesentium suscipit expedita?</p>
                 <ul><strong>Ingredintes:</strong>
-                    {ingredientes.map((e)=>(<li>{e}</li>))
+                    {ingredientes.map((e)=>(<li key={e}>{e}</li>))
                     }
                 </ul>
                 <p><strong>Complemento:</strong></p>

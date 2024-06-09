@@ -1,8 +1,11 @@
+import DisplayCupons from '@/src/components/DisplayCupons/DisplayCupons'
 import React from 'react'
 
 function CuponsPage() {
   return (
-    <div>CuponsPage</div>
+    <section>
+      <DisplayCupons/>
+    </section>
   )
 }
 
