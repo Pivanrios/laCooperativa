@@ -1,3 +1,4 @@
+'use server'  
 import { db } from "@/firebaseconfig";
 import { collection, getDoc, getDocs, addDoc, doc } from "firebase/firestore";
 import { redirect } from "next/navigation";
@@ -17,7 +18,7 @@ export async function getCupons(){
 }
 
 export async function addCupon(formData){
-    'use server'    
+      
     const {code, amount, type, exp} = Object.fromEntries(formData);
     const active = true;
     const createdAt = new Date().toDateString();
