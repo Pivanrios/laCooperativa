@@ -26,9 +26,9 @@ function ReviewsGallery({productId}) {
         <h3 className="text-2xl font-bold">Reviews</h3>
         <div className=" flex flex-col sm:flex-row p-2 gap-2 ">
           {//conditional statement to see if me have reviews
-          reviews.length < 1 ? <p> No reviews  yet </p> : reviews.map((r)=>{
+          reviews.length < 1 ? <p> No reviews  yet </p> : reviews.map((r,i)=>{
             return (
-              <div key={crypto.randomUUID} className=" flex flex-col bg-yellow-400 p-2 w-full " id="review">
+              <div key={i} className=" flex flex-col bg-yellow-400 p-2 w-full " id="review">
                 <span><p><strong>auth: </strong>{r.auth} <strong>rate: </strong>{r.rating}</p></span>
                 <p>{r.reviewText}</p>
               </div>

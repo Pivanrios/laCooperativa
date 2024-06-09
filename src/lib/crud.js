@@ -20,7 +20,7 @@ export async function getDishes(){
 //getSingle dish
 export async function getDish(dishId){
     try {
-        console.log("Getting Dish",dishId);
+        console.log("Getting Dish");
         const dish = await getDoc(doc(db, "productos", dishId));
         return dish.data();
     } catch (error) {

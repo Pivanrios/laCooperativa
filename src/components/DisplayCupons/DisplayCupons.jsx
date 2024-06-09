@@ -31,7 +31,7 @@ function DisplayCupons() {
     <>
       {currentUser && <div className='flex flex-col  sm:flex-row gap-1 justify-center items-center'>
           {cupons.map((cupon)=>(
-              <CuponCard cupon={cupon}/>
+              <CuponCard cupon={cupon} key={cupon.code}/>
           ))}
       </div>}{
         !currentUser && <div className='p-3 flex flex-col items-center'>

@@ -12,9 +12,10 @@ function SingleProduct({dishId}) {
       try {
         console.log("setting data...")
         const res = await getDish(dishId);
-        console.log(res.ingredientes);
+        console.log("setting ingredientes",res.ingredientes);
         setDish(res);
         setIngredientes(res.ingredientes);
+        console.log("succesfully set data")
       } catch (error) {
         console.error(error);
       }

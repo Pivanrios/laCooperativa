@@ -46,7 +46,7 @@ function About() {
                         grupo de whatsapp o por mensaje al numero 646 123-2222.<br/>
                         Mandas tu comprobante de transferencia por zelle o bbva.
                     </p>
-                    <img src='../images/lasagnaCompleta.jpeg' alt='comida' width={200} className=' rounded-full'/>
+                    <img src='' alt='comida' width={200} className=' rounded-full'/>
                 </span>
             </div>
         </section>
