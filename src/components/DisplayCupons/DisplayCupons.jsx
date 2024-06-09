@@ -3,12 +3,13 @@
 import { useEffect, useState } from 'react'
 //components
 import CuponCard from './Cupon/CuponCard'
+//function
 import { getCupons } from '@/src/lib/cupons';
 
 function DisplayCupons() {
   //state
   const [cupons, setCupons] = useState([]);
-  //
+  //set cupones
   useEffect(()=>{
     const setData = async ()=>{
       const res = await getCupons();
@@ -18,7 +19,7 @@ function DisplayCupons() {
   },[]);
 
   return (
-    <div>
+    <div className='flex flex-col  sm:flex-row gap-1 justify-center items-center'>
         {cupons.map((cupon)=>(
             <CuponCard cupon={cupon}/>
         ))}
