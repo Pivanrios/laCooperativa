@@ -3,10 +3,11 @@
 import { useEffect, useState } from 'react'
 //components
 import CuponCard from './Cupon/CuponCard'
+import Link from 'next/link';
 //functions
 import { getCupons } from '@/src/lib/cupons';
 import { useAuth } from '@/src/context/AuthContext';
-import Link from 'next/link';
+
 
 function DisplayCupons() {
   //state & variables
@@ -16,8 +17,12 @@ function DisplayCupons() {
   //set cupones
   useEffect(()=>{
     const setData = async ()=>{
-      const res = await getCupons();
+      try {
+        const res = await getCupons();
       setCupons(res);
+      } catch (error) {
+       console.error(error); 
+      }
     }
     setData();
   },[]);
