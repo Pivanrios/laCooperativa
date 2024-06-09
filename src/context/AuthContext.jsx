@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
     }, []);
     //
     const signIn = (email, password) => {
-        console.log("on signin function", email, password)
+        //console.log("on signin function", email)
         return signInWithEmailAndPassword(auth, email, password);
     };
     //
