@@ -1,5 +1,6 @@
 'use client'
 import { getDishes } from "@/src/lib/crud"
+import { addOrder } from "@/src/lib/orders";
 
 async function OrderForm() {
     //getDishes
@@ -7,7 +8,7 @@ async function OrderForm() {
     console.log("dishes:")
     return (
     <>
-    <form action="" className="flex flex-col m-1">
+    <form action={addOrder} className="flex flex-col m-1">
         <label htmlFor="">Customer:
             <input type="text" 
                     name="customer" 
