@@ -1,6 +1,11 @@
+'use client'
+import { getDishes } from "@/src/lib/crud"
 
-function OrderForm() {
-  return (
+async function OrderForm() {
+    //getDishes
+    const dishes = await getDishes();
+    console.log("dishes:")
+    return (
     <>
     <form action="" className="flex flex-col m-1">
         <label htmlFor="">Customer:
@@ -14,9 +19,12 @@ function OrderForm() {
                     id="dalivery" />
         </label>
         <label htmlFor="">Dish:
-            <input type="text" 
-                    name="dish" 
-                    id="dish" />
+            <input list="dish" />
+            <datalist id="dish">
+                {dishes.map((dish)=>(
+                    <option value={dish.name}></option>
+                ))}
+            </datalist>
         </label>
         <label htmlFor="">Breakroom:
             <input list="breakroom"/>
@@ -30,13 +38,15 @@ function OrderForm() {
         <label htmlFor="">Quantity:
             <input type="number"
                     name="quantity"
-                    id="quantity" />
+                    id="quantity"
+                    value={0} />
         </label>
         <label htmlFor="">Discount:
             <input type="text"
                     name="disc"
                     id="disc" />
         </label>
+        <p><strong>Total:</strong></p>
         <button className="btn">Submit</button>
     </form>
     </>
