@@ -2,6 +2,7 @@
 //import CRUD methods
 import { db } from "@/firebaseconfig";
 import { collection, addDoc, getDocs } from "firebase/firestore";
+import { redirect } from "next/navigation";
 
 //asynchronous function using API calls to connect with database
 //POST
@@ -42,5 +43,5 @@ export async function getOrders(){
     } catch (error) {
         console.log(error);
     }
-    
+    redirect('/admin')
 }
