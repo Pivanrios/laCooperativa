@@ -1,8 +1,12 @@
 
 
 function DishForm() {
+    //getValue from inputs
+    //create object to send and POST
+    //validate data input
+    //POST in database
   return (
-    <form action="" className="flex flex-col">
+    <form action="" className="flex flex-col bg-slate-400 p-5 mx-20 my-2">
         <label htmlFor="">Name:
             <input type="text" name="name" id="name" required/>
         </label>
