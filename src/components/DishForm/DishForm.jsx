@@ -1,14 +1,27 @@
+"use client"
+import { useState } from "react"
 
 
 function DishForm() {
     //getValue from inputs
+    const [name, setName] =  useState("");//string < 30 char
+    const [price,setPrice]= useState(0);//float price to sell in dlls
+    const [cost, setCost] = useState(0);//float in pesos cost of ingredients
+    const [desc, setDesc] = useState("");//text area <100 char
+    const [sides, setSides] = useState([]);//array of sides
+    const [imaUrl, setImgUrl] = useState("");// string 
+
     //create object to send and POST
     //validate data input
     //POST in database
   return (
     <form action="" className="flex flex-col bg-slate-400 p-5 mx-20 my-2">
         <label htmlFor="">Name:
-            <input type="text" name="name" id="name" required/>
+            <input type="text" 
+                    name="name" 
+                    id="name" 
+                    onChange={(e)=>setName(e.target.value)}
+                    required/>
         </label>
         <label htmlFor="">Price:
             <input type="number" name="price" id="price" required/>
