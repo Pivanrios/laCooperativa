@@ -1,9 +1,10 @@
 "use server"
 //import CRUD methods
 import { db } from "@/firebaseconfig";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 //asynchronous function using API calls to connect with database
+//POST
 export async function addOrder(formData){
     //try and catch bloks para buscar errores.
     try {
@@ -27,4 +28,19 @@ export async function addOrder(formData){
         //show the error.
         console.log("Error:",error)
     }
+}
+//GET ORDERS
+export async function getOrders(){
+    const orders = [];
+    try {
+        //GET docs from collection
+        const response = await getDocs(collection(db,"orders"))
+        console.log("Respuesta...");
+        response.forEach((order)=>orders.push(order.data()))
+        console.log("Orders: ", orders)
+        return orders;
+    } catch (error) {
+        console.log(error);
+    }
+    
 }
