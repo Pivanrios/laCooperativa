@@ -18,22 +18,24 @@ async function OrderForm() {
                     name="delivery" 
                     id="dalivery" />
         </label>
-        <label htmlFor="">Dish:
-            <input list="dishList" name="dish" id="dish" />
-            <datalist id="dishList">
-                {dishes.map((dish)=>(
-                    <option value={dish.name}></option>
+        {//use select element to chose dish and breakroom. 
+        }<label for="dish-select">
+            <select name="dish" id="dish-select" required>
+                <option value={""}>------select option------</option>
+                {dishes.map((dish,i)=>(
+                    <option value={dish.name}>{dish.name} - ${dish.price}.00</option>
                 ))}
-            </datalist>
+            </select>
         </label>
-        <label htmlFor="">Breakroom:
-            <input list="breakroomList" name="breakroom" id="breakroom"/>
-            <datalist id="breakroomList">
-                <option value="Main"></option>
-                <option value="South(smoking area)"></option>
-                <option value="West (inbound)"></option>
-                <option value="East (singles)"></option>
-            </datalist>
+        <label for="breakroom-select">Breakroom:
+            <select name="breakroom" id="breakroom-select">
+                <option value="Main">Main - Norte</option>
+                <option value="Shipdock">Shipdock - Sur</option>
+                <option value="Singles">Singles - Este</option>
+                <option value="Decant">Decant - Oeste</option>
+                <option value="Pick">Pick - 2nd floor</option>
+                <option value="Stow">Stow - 2nd floor</option>
+            </select>
         </label>
         <label htmlFor="">Quantity:
             <input type="number"
@@ -45,6 +47,9 @@ async function OrderForm() {
             <input type="text"
                     name="disc"
                     id="disc" />
+        </label>
+        <label htmlFor="">Nota:
+            <input type="text" name="note"/>
         </label>
         <p><strong>Total:</strong></p>
         <button className="btn">Submit</button>
