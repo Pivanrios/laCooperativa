@@ -2,7 +2,7 @@
 
 function DishForm() {
   return (
-    <form action="">
+    <form action="" className="flex flex-col">
         <label htmlFor="">Name:
             <input type="text" name="name" id="name" required/>
         </label>
