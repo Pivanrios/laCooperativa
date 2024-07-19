@@ -1,4 +1,3 @@
-'use client'
 import { getDishes } from "@/src/lib/crud"
 import { addOrder } from "@/src/lib/orders";
 
@@ -20,16 +19,16 @@ async function OrderForm() {
                     id="dalivery" />
         </label>
         <label htmlFor="">Dish:
-            <input list="dish" />
-            <datalist id="dish">
+            <input list="dishList" name="dish" id="dish" />
+            <datalist id="dishList">
                 {dishes.map((dish)=>(
                     <option value={dish.name}></option>
                 ))}
             </datalist>
         </label>
         <label htmlFor="">Breakroom:
-            <input list="breakroom"/>
-            <datalist id="breakroom">
+            <input list="breakroomList" name="breakroom" id="breakroom"/>
+            <datalist id="breakroomList">
                 <option value="Main"></option>
                 <option value="South(smoking area)"></option>
                 <option value="West (inbound)"></option>
@@ -40,7 +39,7 @@ async function OrderForm() {
             <input type="number"
                     name="quantity"
                     id="quantity"
-                    value={0} />
+                    placeholder="0" />
         </label>
         <label htmlFor="">Discount:
             <input type="text"
