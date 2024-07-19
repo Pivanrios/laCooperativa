@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 
 function SingleProduct({dishId}) {
   const [dish, setDish] = useState({});
-  const [ingredientes, setIngredientes] = useState([]);
   //-------
   useEffect(()=>{
     const setData = async ()=>{
@@ -14,7 +13,6 @@ function SingleProduct({dishId}) {
         const res = await getDish(dishId);
         console.log("setting ingredientes",res.ingredientes);
         setDish(res);
-        setIngredientes(res.ingredientes);
         console.log("succesfully set data")
       } catch (error) {
         console.error(error);
@@ -31,10 +29,6 @@ function SingleProduct({dishId}) {
                 <p><strong>Description: </strong><br/>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis necessitatibus
                      explicabo eaque exercitationem illo voluptatibus obcaecati fuga odit? Doloribus 
                      officia maiores at dolor earum odio tempore id praesentium suscipit expedita?</p>
-                <ul><strong>Ingredintes:</strong>
-                    {ingredientes.map((e)=>(<li key={e}>{e}</li>))
-                    }
-                </ul>
                 <p><strong>Complemento:</strong></p>
                 <p><strong>Price:</strong>${dish.price}.00</p>
             </div>
