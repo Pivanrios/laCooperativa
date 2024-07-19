@@ -36,8 +36,9 @@ async function OrderForm() {
                 <option value="Pick">Pick - 2nd floor</option>
                 <option value="Stow">Stow - 2nd floor</option>
             </select>
-        </label>
-        <label htmlFor="">Quantity:
+        </label>{
+            //add buttons +   -  
+        }<label htmlFor="">Quantity:
             <input type="number"
                     name="quantity"
                     id="quantity"
