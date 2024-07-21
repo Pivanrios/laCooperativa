@@ -32,7 +32,7 @@ function OrderList() {
         <button className="btn">Sort</button>
       </span>
       <div className="w-full">
-        <span className="flex flex-row font-semibold">
+        <span className="flex flex-row font-semibold gap-2">
           <p>Order</p>
           <p>Delivery Date</p>
           <p>Customer</p>
@@ -41,7 +41,7 @@ function OrderList() {
         </span>
         <div>
         {orders.map((order)=>(
-              <div className="flex flex-row p-1">
+              <div className="flex flex-row p-1 gap-5">
                 <p>{order.orderNum}</p>
                 <p>{order.delivery}</p>
                 <p>{order.customer}</p>
