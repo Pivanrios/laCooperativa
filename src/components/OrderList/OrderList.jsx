@@ -1,8 +1,30 @@
-import { getOrders } from "@/src/lib/orders"
+'use client'
+//authentication
 
+import { getOrders } from "@/src/lib/orders";
+//UseState hooks
+import { useState,useEffect } from "react";
 
-async function OrderList() {
-    const orders = await getOrders();
+//function 
+function OrderList() {
+    //convert to state
+    const [orders, setOrders] = useState([]);
+    //useEffect
+    useEffect(()=>{
+      const setData = async ()=>{
+        console.log("Inside use Effect..")
+        try {
+          const res = await getOrders();
+          setOrders(res);
+          console.log("setting orders");
+
+        } catch (error) {
+          console.error
+          console.log("Error has been found:",error);
+        }
+      }
+      setData();//invoke
+    },[])
   return (
     <section className="flex flex-col w-full">
       <span className=" justify-between">
@@ -10,7 +32,7 @@ async function OrderList() {
         <button className="btn">Sort</button>
       </span>
       <div className="w-full">
-        <span className="flex flex-row font-semibold">
+        <span className="flex flex-row font-semibold gap-2">
           <p>Order</p>
           <p>Delivery Date</p>
           <p>Customer</p>
@@ -19,7 +41,7 @@ async function OrderList() {
         </span>
         <div>
         {orders.map((order)=>(
-              <div className="flex flex-row p-1">
+              <div className="flex flex-row p-1 gap-5">
                 <p>{order.orderNum}</p>
                 <p>{order.delivery}</p>
                 <p>{order.customer}</p>
