@@ -4,6 +4,7 @@ import { db } from "@/firebaseconfig";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { redirect } from "next/navigation";
 
+
 //asynchronous function using API calls to connect with database
 //POST
 export async function addOrder(formData){
@@ -29,9 +30,12 @@ export async function addOrder(formData){
         //show the error.
         console.log("Error:",error)
     }
+    //change page
+    redirect('/admin/orders')
 }
 //GET ORDERS
 export async function getOrders(){
+    //collection of orders will be store here---
     const orders = [];
     try {
         //GET docs from collection
@@ -43,5 +47,4 @@ export async function getOrders(){
     } catch (error) {
         console.log(error);
     }
-    redirect('/admin')
 }
