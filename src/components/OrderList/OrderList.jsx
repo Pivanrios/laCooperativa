@@ -9,9 +9,16 @@ async function OrderList() {
         <button className="btn">Filter</button>
         <button className="btn">Sort</button>
       </span>
-      <div>
-        <span className="flex flex-row"><p>Delivery Date</p><p>Customer</p><p>Platillo</p><p>Qty</p></span>
-          {orders.map((order)=>(
+      <div className="w-full">
+        <span className="flex flex-row font-semibold">
+          <p>Order</p>
+          <p>Delivery Date</p>
+          <p>Customer</p>
+          <p>Platillo</p>
+          <p>Qty</p>
+        </span>
+        <div>
+        {orders.map((order)=>(
               <div className="flex flex-row p-1">
                 <p>{order.orderNum}</p>
                 <p>{order.delivery}</p>
@@ -20,6 +27,7 @@ async function OrderList() {
                 <p>{order.quantity}</p>
               </div>
           ))}
+        </div>
       </div>
     </section>
   )
