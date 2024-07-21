@@ -3,7 +3,7 @@ import React from 'react'
 
 function OrdersLayout({children}) {
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-col md:flex-row'>
         <OrderMenu/>
         {children}
     </div>
