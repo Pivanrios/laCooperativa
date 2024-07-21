@@ -1,8 +1,30 @@
-import { getOrders } from "@/src/lib/orders"
+'use client'
+//authentication
 
+import { getOrders } from "@/src/lib/orders";
+//UseState hooks
+import { useState,useEffect } from "react";
 
-async function OrderList() {
-    const orders = await getOrders();
+//function 
+function OrderList() {
+    //convert to state
+    const [orders, setOrders] = useState([]);
+    //useEffect
+    useEffect(()=>{
+      const setData = async ()=>{
+        console.log("Inside use Effect..")
+        try {
+          const res = await getOrders();
+          setOrders(res);
+          console.log("setting orders");
+
+        } catch (error) {
+          console.error
+          console.log("Error has been found:",error);
+        }
+      }
+      setData();//invoke
+    },[])
   return (
     <section className="flex flex-col w-full">
       <span className=" justify-between">
