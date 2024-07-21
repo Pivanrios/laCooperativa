@@ -6,7 +6,7 @@ export default function Navbar() {
     <header className="flex flex-row justify-between bg-slate-400">
       <div/>
         <nav className=" gap-2 flex flex-row justify-center">
-            <Link href={"/admin"} className="">Orders</Link>
+            <Link href={"/admin/orders"} className="">Orders</Link>
             <Link href={"/admin/products"}>Products</Link>
             <Link href={"/admin/customers"}>Customers</Link>
             <Link href={"/admin/sales"}>Sales</Link>

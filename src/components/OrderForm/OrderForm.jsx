@@ -19,15 +19,15 @@ async function OrderForm() {
                     id="dalivery" />
         </label>
         {//use select element to chose dish and breakroom. 
-        }<label for="dish-select">
+        }<label htmlFor="dish-select">Dish:
             <select name="dish" id="dish-select" required>
                 <option value={""}>------select option------</option>
-                {dishes.map((dish,i)=>(
-                    <option value={dish.name}>{dish.name} - ${dish.price}.00</option>
+                {dishes.map((dish,i)=>(//add key to element
+                    <option value={dish.name} key={i}>{dish.name} - ${dish.price}.00</option>
                 ))}
             </select>
         </label>
-        <label for="breakroom-select">Breakroom:
+        <label htmlFor="breakroom-select">Breakroom:
             <select name="breakroom" id="breakroom-select">
                 <option value="Main">Main - Norte</option>
                 <option value="Shipdock">Shipdock - Sur</option>
@@ -53,7 +53,7 @@ async function OrderForm() {
             <input type="text" name="note"/>
         </label>
         <p><strong>Total:</strong></p>
-        <button className="btn">Submit</button>
+        <button className="btn h-10 sm:h-8">Submit</button>
     </form>
     </>
   )
