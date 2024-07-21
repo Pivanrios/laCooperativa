@@ -6,8 +6,7 @@ import React from 'react'
 function Admin() {
   return (
     <div className='w-full'>
-      <OrderForm/>
-      <OrderList/>
+      Admin
     </div>
   )
 }
