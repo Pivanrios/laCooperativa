@@ -8,10 +8,10 @@ import { redirect } from "next/navigation";
 //asynchronous function using API calls to connect with database
 //POST
 export async function addOrder(formData){
+    let num = 0;
     //try and catch bloks para buscar errores.
     try {
         console.log("Setting order..")
-        let num = 0;
         //destrocture the values sent.
         const {customer, delivery, dish, breakroom, quantity, disc, note} = Object.fromEntries(formData);
         //get order #
@@ -39,7 +39,7 @@ export async function addOrder(formData){
         console.log("Error:",error)
     }
     //change page
-    redirect('/admin/orders')
+    redirect(`/admin/orders/newOrder/${num+1}`)
 }
 //GET ORDERS
 export async function getOrders(){
