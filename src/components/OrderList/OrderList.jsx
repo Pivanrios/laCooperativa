@@ -3,7 +3,7 @@
 
 import { getOrders } from "@/src/lib/orders";
 //UseState hooks
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 //function 
 function OrderList() {
@@ -14,10 +14,12 @@ function OrderList() {
       const setData = async ()=>{
         console.log("Inside use Effect..")
         try {
-          const res = await getOrders();
+          let res = await getOrders();
+          //sort orders by number
+          res.sort((a,b)=>a.orderNum - b.orderNum);
+          //set our state
           setOrders(res);
-          console.log("setting orders");
-
+          console.log("orders set");
         } catch (error) {
           console.error
           console.log("Error has been found:",error);
@@ -41,7 +43,7 @@ function OrderList() {
         </span>
         <div>
         {orders.map((order)=>(
-              <div className="flex flex-row p-1 gap-5">
+              <div className="flex flex-row p-1 gap-5" key={order.orderNum}>
                 <p>{order.orderNum}</p>
                 <p>{order.delivery}</p>
                 <p>{order.customer}</p>
