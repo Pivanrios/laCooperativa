@@ -34,22 +34,29 @@ function OrderList() {
         <button className="btn">Sort</button>
       </span>
       <div className="w-full">
-        <span className="flex flex-row font-semibold gap-2">
-          <p>Order</p>
+        <span className="flex flex-row font-semibold gap-2 w-full justify-around">
+          <p className="">Order</p>
           <p>Delivery Date</p>
           <p>Customer</p>
           <p>Platillo</p>
           <p>Qty</p>
+          <p>Status</p>
+          <p>Buttons</p>
         </span>
         <div>
         {orders.map((order)=>(
-              <div className="flex flex-row p-1 gap-5" key={order.orderNum}>
+              <div className="flex flex-row p-1 gap-5 w-full justify-around" key={order.orderNum}>
                 <p>{order.orderNum}</p>
                 <p>{order.delivery}</p>
                 <p>{order.customer}</p>
                 <p>{order.dish}</p>
                 <p>{order.quantity}</p>
-              </div>
+                <p>{order.status}</p>
+                <span>
+                  <button className=" text-white bg-green-700 px-2 rounded-md hover:bg-green-500">$</button>
+                  <button className="text-white bg-red-700 px-2 rounded-md hover:bg-red-500">X</button>
+                </span>
+                </div>
           ))}
         </div>
       </div>
