@@ -1,17 +1,22 @@
+import { getDishes } from '@/src/lib/crud'
 import React from 'react'
 
-function OrderForCustomer() {
+async function OrderForCustomer() {
     //get user info (name, acumulation, shift)
     //get dishes available
+    const dishes = await getDishes();
     
   return (
     <>
     <form action="" className='flex flex-col gap-1'>
         <h3>Order for user</h3>
-        <label >Dish:
-            <input type="text" 
-                    name='dish'
-                    id='dish'/>
+        <label htmlFor="dish-select">Dish:
+            <select name="dish" id="dish-select" required>
+                <option value={""}>------select option------</option>
+                {dishes.map((dish,i)=>(//add key to element
+                    <option value={dish.name} key={i}>{dish.name} - ${dish.price}.00</option>
+                ))}
+            </select>
         </label>
         <label htmlFor="">Qty:
             <input type="number"
