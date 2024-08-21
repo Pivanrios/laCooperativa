@@ -24,7 +24,7 @@ export default function SignIn() {
                 console.log("Signing In...")
                 const res = await signIn(email, password);
                 console.log("successfully sign in");
-                router.push('/')
+                router.push('/profile')
             }catch (error) {
                 setError("Failed to sign in");
                 console.log(error.code)
