@@ -1,12 +1,14 @@
 'use client'
 // context/AuthContext.js
+//react hooks
 import { createContext, useContext, useEffect, useState } from "react";
+//firebase authentication and functions
 import { auth } from "@/firebaseconfig";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 //create context
 const AuthContext = createContext();
-//
+//initialize use contect
 export function useAuth() {
   return useContext(AuthContext);
 }
