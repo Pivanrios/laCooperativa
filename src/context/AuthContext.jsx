@@ -25,12 +25,12 @@ export function AuthProvider({ children }) {
 
         return unsubscribe;
     }, []);
-    //
+    //sign in with email and password
     const signIn = (email, password) => {
         //console.log("on signin function", email)
         return signInWithEmailAndPassword(auth, email, password);
     };
-    //
+    //context  values to pass by
     const value = {
         currentUser,
         signIn

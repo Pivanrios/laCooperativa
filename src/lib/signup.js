@@ -34,6 +34,6 @@ export async function signUpUser(formData){
         }
     }
     if(user){//if user is succesfully added go to SignIn Porces
-      redirect('/profile')
+      redirect('/login')
     }
 };
