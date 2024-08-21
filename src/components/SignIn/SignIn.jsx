@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useAuth } from "@/src/context/AuthContext";
 //next functions
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 //
 export default function SignIn() {
@@ -24,7 +25,7 @@ export default function SignIn() {
                 console.log("Signing In...")
                 const res = await signIn(email, password);
                 console.log("successfully sign in");
-                router.push('/')
+                router.push('/profile')
             }catch (error) {
                 setError("Failed to sign in");
                 console.log(error.code)
@@ -49,10 +50,16 @@ export default function SignIn() {
                     className="w-full"
                     name="password"/>
             </label>
-            {error && <p>{error}</p>}
+            {error && (<>
+                <p>{error}</p>
+                <span className="font-light text-xs">Olvidaste tu contrasena? <Link href={"/updatePass"} className="text-blue-700">Recuperar</Link> </span>
+                </>
+                )}
+            
             <button type="submit"
                     className="btn self-end" >Sign In</button>
         </form>
+        <span className="font-light text-xs">No tienes cuenta? <Link href={"/register"} className="text-blue-700">Registrate</Link> </span>
         </div>
     );
 }

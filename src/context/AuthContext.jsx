@@ -1,15 +1,18 @@
 'use client'
 // context/AuthContext.js
+//react hooks
 import { createContext, useContext, useEffect, useState } from "react";
+//firebase authentication and functions
 import { auth } from "@/firebaseconfig";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 //create context
 const AuthContext = createContext();
-//
+//initialize use contect
 export function useAuth() {
   return useContext(AuthContext);
 }
+
 //
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
@@ -17,18 +20,24 @@ export function AuthProvider({ children }) {
     //
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
+            if(user){
+                console.log("user found:", user.displayName);
+            }else{
+                console.log("user not found :c")
+            }
         setCurrentUser(user);
         setLoading(false);
         });
 
         return unsubscribe;
     }, []);
-    //
+
+    //sign in with email and password
     const signIn = (email, password) => {
         //console.log("on signin function", email)
         return signInWithEmailAndPassword(auth, email, password);
     };
-    //
+    //context  values to pass by
     const value = {
         currentUser,
         signIn

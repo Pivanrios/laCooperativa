@@ -1,6 +1,7 @@
 'use client'
 //function to register user on db
 import { signUpUser } from "@/src/lib/signup"
+import Link from "next/link";
 //react hooks
 import { useEffect, useState } from "react"
 
@@ -63,6 +64,7 @@ function Signup() {
             {//if valid is true show the submit button
             valid && <button className='btn self-center'>submit</button>
           }</form>
+          <span className="font-light text-xs">Ya tienes cuenta? <Link href={"/login"} className="text-blue-700">Log In</Link> </span>
         </div>
       </div>
     </section>
