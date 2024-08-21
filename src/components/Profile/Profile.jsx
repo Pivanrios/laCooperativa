@@ -5,6 +5,7 @@ import Link from "next/link";
 
 function Profile() {
     const {currentUser} = useAuth();
+    console.log("User:");
 
   return (
     <section>
