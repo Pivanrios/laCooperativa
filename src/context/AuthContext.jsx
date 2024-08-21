@@ -12,6 +12,7 @@ const AuthContext = createContext();
 export function useAuth() {
   return useContext(AuthContext);
 }
+
 //
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
@@ -19,12 +20,18 @@ export function AuthProvider({ children }) {
     //
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
+            if(user){
+                console.log("user found:", user.displayName);
+            }else{
+                console.log("user not found :c")
+            }
         setCurrentUser(user);
         setLoading(false);
         });
 
         return unsubscribe;
     }, []);
+
     //sign in with email and password
     const signIn = (email, password) => {
         //console.log("on signin function", email)
