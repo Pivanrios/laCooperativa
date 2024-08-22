@@ -3,7 +3,7 @@ import { auth, db } from "@/firebaseconfig";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { redirect } from "next/navigation";
 //Set document
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 
 
 //create user
@@ -43,3 +43,11 @@ export async function signUpUser(formData){
       redirect('/login')
     }
 };
+//user info
+export async function getUserData(userId){
+  console.log("getting user collection");
+  const res = await getDoc(doc(db,"users", userId));
+  console.log("Response:", res.data());
+  return res.data();
+
+}
