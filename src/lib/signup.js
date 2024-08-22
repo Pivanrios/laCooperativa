@@ -1,14 +1,16 @@
 'use server'
-import { auth } from "@/firebaseconfig";
+import { auth, db } from "@/firebaseconfig";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { redirect } from "next/navigation";
+//Set document
+import { setDoc, doc, getDoc } from "firebase/firestore";
 
 
 //create user
 export async function signUpUser(formData){
   //setup variables...
     let user = null
-    const {username, email, password } = Object.fromEntries(formData);
+    const {username, email, password, shift } = Object.fromEntries(formData);
     //console.log("entries:", username, email, password);
     try {
       //create user with email address to our firebase authentication service
@@ -20,6 +22,10 @@ export async function signUpUser(formData){
         displayName: username,
       })
       console.log("username successfully added...", user.displayName);
+      //set user collection
+      const docRef =  await setDoc(doc(db,"users", user.uid),{
+        shift
+      })
 
     } catch (error) { //customize errors for debbuging
         console.error(error);
@@ -37,3 +43,11 @@ export async function signUpUser(formData){
       redirect('/login')
     }
 };
+//user info
+export async function getUserData(userId){
+  console.log("getting user collection");
+  const res = await getDoc(doc(db,"users", userId));
+  console.log("Response:", res.data());
+  return res.data();
+
+}

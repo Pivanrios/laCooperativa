@@ -61,6 +61,10 @@ function Signup() {
                       placeholder="same as arriba ^"
                       onChange={(e)=>setPassVer(e.target.value)}/>
             </label>
+            <label htmlFor=""> Shift:
+              <input type="radio" name="shift" id="day" value={"Day"}/> Day
+              <input type="radio" name="shift" id="nigth" value={"Nigth"} /> Nigth
+            </label>
             {//if valid is true show the submit button
             valid && <button className='btn self-center'>submit</button>
           }</form>
