@@ -1,15 +1,39 @@
+'use client'
+import { useAuth } from '@/src/context/AuthContext';
 import { getDishes } from '@/src/lib/crud'
-import React from 'react'
+import { addOrder } from '@/src/lib/orders';
+import React, { useEffect, useState } from 'react'
 
-async function OrderForCustomer() {
+function OrderForCustomer() {
     //get user info (name, acumulation, shift)
+    const {currentUser} = useAuth();
+    console.log("current user:", currentUser)
+    //add states
+    const [dishes, setDishes] = useState([]);
     //get dishes available
-    const dishes = await getDishes();
+    useEffect(()=>{
+        const setData = async ()=>{
+            try{
+                const res = await getDishes();
+                setDishes(res);
+            }catch{
+                console.log(error);
+            }
+        }
+        setData();
+    },[])
+    
     
   return (
     <>
-    <form action="" className='flex flex-col gap-1'>
+    <form action={addOrder} className='flex flex-col gap-1'>
         <h3>Order for user</h3>
+        <label htmlFor="">For:
+            <input type="text" 
+                    name='customer' 
+                    id='username' 
+                    value={currentUser.displayName}/>
+        </label>
         <label htmlFor="dish-select">Dish:
             <select name="dish" id="dish-select" required>
                 <option value={""}>------select option------</option>
@@ -47,7 +71,7 @@ async function OrderForCustomer() {
             <input type="text" name="note"/>
         </label>
         <p><strong>Total:</strong></p>
-        <input type="button" value="Submit" />
+        <input type="submit" value="Submit" />
     </form>
     </>
   )
