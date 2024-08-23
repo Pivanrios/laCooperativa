@@ -32,6 +32,7 @@ function Login({setOpen}) {
         <div>
             {login &&   (<div className="flex flex-col sm:flex-row gap-1">
                             <LinkItem setOpen={setOpen} item={cupons}/>
+                            <LinkItem setOpen={setOpen} item={{title: "Order", path: '/order'} }/>
                             <button onClick={handleSubmit}
                                     className="px-3 bg-red-800 text-white rounded-full"
                                     >Logout</button>
