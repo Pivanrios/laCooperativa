@@ -91,7 +91,14 @@ function OrderForCustomer() {
         <label htmlFor="">Nota:
             <input type="text" name="note"/>
         </label>
-        <p><strong>Total:</strong>{total}</p>
+        <label htmlFor="">Total:
+            <input type="number" 
+                    name="total" 
+                    id="total" 
+                    value={total}
+                    required 
+                    readOnly/>
+        </label>
         <p>points:{total*10}</p>
         <input type="submit" value="Submit" />
     </form>
