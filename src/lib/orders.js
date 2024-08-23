@@ -13,7 +13,7 @@ export async function addOrder(formData){
     try {
         console.log("Setting order..")
         //destrocture the values sent.
-        const {customer, delivery, dish, breakroom, quantity, disc, note} = Object.fromEntries(formData);
+        const {customer, delivery, dish, breakroom, qty, disc, note, total} = Object.fromEntries(formData);
         //get order #
         const response = await getDocs(collection(db, "orders"))
         response.forEach(()=> num++);
@@ -26,11 +26,12 @@ export async function addOrder(formData){
             delivery,
             dish,
             breakroom,
-            quantity,
+            qty,
             disc,
             status:"In-progress",
             note,
-            timestamp
+            timestamp,
+            total
         })
         console.log("..document added")
     } catch (error) {

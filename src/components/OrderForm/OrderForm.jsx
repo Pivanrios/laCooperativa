@@ -40,7 +40,7 @@ async function OrderForm() {
             //add buttons +   -  
         }<label htmlFor="">Quantity:
             <input type="number"
-                    name="quantity"
+                    name="qty"
                     id="quantity"
                     placeholder="0" />
         </label>
