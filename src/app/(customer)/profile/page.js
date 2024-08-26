@@ -1,10 +1,12 @@
-import Profile from '@/src/components/Profile/Profile'
 import React from 'react'
 
+//on your profile page you can create and view the status
+// of your orders
 function ProfilePage() {
   return (
     <section>
-        <Profile/>
+        Page starts here------
+        list of orders
     </section>
   )
 }
