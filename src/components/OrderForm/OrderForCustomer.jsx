@@ -35,10 +35,15 @@ function OrderForCustomer() {
 
         }
     },[dishSelected, qty])
-    
+    //handle submit
+    const handleSubmit = async (formData)=>{
+        const userId = currentUser.uid
+        addOrder(formData, userId);
+    }
+
   return (
     <>
-    <form action={addOrder} className='flex flex-col gap-1'>
+    <form action={handleSubmit} className='flex flex-col gap-1'>
         <h3>Order for user</h3>
         <label htmlFor="">For:
             <input type="text" 

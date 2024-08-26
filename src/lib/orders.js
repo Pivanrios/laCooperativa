@@ -1,13 +1,13 @@
 "use server"
 //import CRUD methods
 import { db } from "@/firebaseconfig";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, setDoc, doc, getDoc } from "firebase/firestore";
 import { redirect } from "next/navigation";
 
 
 //asynchronous function using API calls to connect with database
 //POST
-export async function addOrder(formData){
+export async function addOrder(formData, userId){
     let num = 0;
     //try and catch bloks para buscar errores.
     try {
@@ -34,6 +34,12 @@ export async function addOrder(formData){
             total
         })
         console.log("..document added")
+        //add order number to the history of user
+        await setDoc(doc(db,"users", userId,"history", `order${num+1}`),{
+            orderId: num+1
+        })
+        console.log("added to users history..")
+
     } catch (error) {
         console.error
         //show the error.
@@ -41,7 +47,7 @@ export async function addOrder(formData){
     }
     //change page 
     //    !-----------Create condition for admin or user------------------!
-    redirect(`/admin/orders/newOrder/${num+1}`)
+    redirect(`/profile`)
 }
 //GET ORDERS
 export async function getOrders(){
@@ -54,6 +60,19 @@ export async function getOrders(){
         response.forEach((order)=>orders.push(order.data()))
         console.log("Orders retrive")
         return orders;
+    } catch (error) {
+        console.log(error);
+    }
+}
+//GET USERS ORDERS
+export async function getCustomerOrders(userId) {
+    const history = [];
+    try {
+        //get collection of orders
+        console.log("getting history...")
+        const res = await getDocs(collection(db,"users", userId, "history"))
+        res.forEach((order)=>history.push(order.data()))
+        console.log("history retrieve",history)
     } catch (error) {
         console.log(error);
     }
