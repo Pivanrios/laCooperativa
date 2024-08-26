@@ -39,7 +39,8 @@ export async function addOrder(formData){
         //show the error.
         console.log("Error:",error)
     }
-    //change page
+    //change page 
+    //    !-----------Create condition for admin or user------------------!
     redirect(`/admin/orders/newOrder/${num+1}`)
 }
 //GET ORDERS
