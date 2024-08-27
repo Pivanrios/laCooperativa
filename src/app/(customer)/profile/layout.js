@@ -9,7 +9,9 @@ function ProfileLayout({children}) {
         <nav>
         
         </nav>
+        <div className='h-full w-full'>
         {children}
+        </div>
     </div>
   )
 }

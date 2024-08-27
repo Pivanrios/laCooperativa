@@ -1,6 +1,7 @@
 "use client"
 import { useAuth } from '@/src/context/AuthContext'
 import { getCustomerOrders } from '@/src/lib/orders';
+import Link from 'next/link';
 
 import React, { useEffect, useState } from 'react'
 
@@ -31,9 +32,9 @@ function ClientsHistory() {
 
   return (
     <>
-    <div className=''> 
-      <h4>History</h4>
-      {history && history.map((o)=>(<span className='bg-slate-400 hover:bg-slate-200'>{o.orderId}  status</span>))}
+    <h4>History</h4>
+    <div className='flex flex-col'> 
+      {history && history.map((o)=>(<Link href={`/profile/${o.orderId}`} className='bg-slate-400 hover:bg-slate-200 '>{o.orderId}  status</Link>))}
     </div>
     </>
   )
