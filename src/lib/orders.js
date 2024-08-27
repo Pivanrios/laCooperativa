@@ -73,8 +73,9 @@ export async function getCustomerOrders(userId) {
         const res = await getDocs(collection(db,"users", userId, "history"))
         res.forEach((order)=>history.push(order.data()))
         console.log("history retrieve",history)
+        return history;
     } catch (error) {
         console.log(error);
     }
-    return history;
+    
 }
