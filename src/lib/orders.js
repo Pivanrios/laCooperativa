@@ -76,4 +76,5 @@ export async function getCustomerOrders(userId) {
     } catch (error) {
         console.log(error);
     }
+    return history;
 }
