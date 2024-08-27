@@ -31,9 +31,9 @@ function ClientsHistory() {
 
   return (
     <>
-    <div className='flex flex-col'> 
+    <div className=''> 
       <h4>History</h4>
-      {history.map((o)=>(<span className='bg-slate-400 hover:bg-slate-200'>{o.orderId}  status</span>))}
+      {history && history.map((o)=>(<span className='bg-slate-400 hover:bg-slate-200'>{o.orderId}  status</span>))}
     </div>
     </>
   )
