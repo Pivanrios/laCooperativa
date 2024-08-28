@@ -1,6 +1,25 @@
-import React from 'react'
+'use client'
+import { getOrderById } from '@/src/lib/orders'
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react'
 
-function CustomerConfirmation() {
+function CustomerConfirmation({id}) {
+  //states
+  const [order, setOrder] = useState({});
+  //get order data
+  useEffect(()=>{
+    const setData = async ()=>{
+      try {
+        const res = await getOrderById(id);
+        console.log("RESPONSE:",res);
+        setOrder(res);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    setData();
+    console.log("Order", order)
+  },[])
   return (
     <div className='flex flex-col gap-2 bg-blue-800 m-2 text-white w-80'>
         <h3>Confirmation Order # {order.orderNum}</h3>

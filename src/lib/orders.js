@@ -9,6 +9,7 @@ import { redirect } from "next/navigation";
 //POST
 export async function addOrder(formData, userId){
     let num = 0;
+    let id = ""
     //try and catch bloks para buscar errores.
     try {
         console.log("Setting order..")
@@ -33,10 +34,13 @@ export async function addOrder(formData, userId){
             timestamp,
             total
         })
-        console.log("..document added")
+        console.log("..document added---->", docRef.id)
+        id = docRef.id
         //add order number to the history of user
         await setDoc(doc(db,"users", userId,"history", `order${num+1}`),{
-            orderId: num+1
+            orderId: docRef.id,
+            number: num+1,
+            
         })
         console.log("added to users history..")
 
@@ -47,7 +51,7 @@ export async function addOrder(formData, userId){
     }
     //change page 
     //    !-----------Create condition for admin or user------------------!
-    redirect(`/profile/${num+1}`)
+    redirect(`/profile/${id}`)
 }
 //GET ORDERS
 export async function getOrders(){
@@ -78,4 +82,16 @@ export async function getCustomerOrders(userId) {
         console.log(error);
     }
     
+}
+
+//GET ORDER BY ID
+export async function getOrderById(id) {
+    console.log("getting order..", id);
+    try {
+        const res = await getDoc(doc(db, "orders", id));
+        console.log("order retrieve...");
+        return res.data();
+    } catch (error) {
+        console.log(error);
+    }
 }
