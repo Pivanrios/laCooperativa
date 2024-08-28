@@ -7,7 +7,8 @@ import React, { useEffect, useState } from 'react'
 
 function ClientsHistory() {
   //set states
-    let [history, setHistory] = useState([]);
+    const [history, setHistory] = useState([]);
+    const [load, setLoad] = useState(false);
     const {currentUser} = useAuth();
     //set data
     useEffect(()=>{
@@ -22,6 +23,7 @@ function ClientsHistory() {
           if (history.length == 0){//condition
             res.forEach((e)=>{history.push(e)})
           }
+          setLoad(true);
         } catch (error) {
           console.log(error);
         }
@@ -34,7 +36,7 @@ function ClientsHistory() {
     <>
     <h4>History</h4>
     <div className='flex flex-col'> 
-      {history && history.map((o)=>(<Link href={`/profile/${o.orderId}`} className='bg-slate-400 hover:bg-slate-200 '>{o.orderId}  status</Link>))}
+      {load && history.map((o)=>(<Link href={`/profile/${o.orderId}`} className='bg-slate-400 hover:bg-slate-200 '>{o.orderId}  status</Link>))}
     </div>
     </>
   )

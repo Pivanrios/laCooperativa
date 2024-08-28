@@ -7,7 +7,7 @@ function ProfileLayout({children}) {
   return (
     <div>
         <nav>
-        
+        navigation
         </nav>
         <div className='h-full w-full'>
         {children}
