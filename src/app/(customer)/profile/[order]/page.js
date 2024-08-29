@@ -12,8 +12,8 @@ async function OrderPage({params}) {
   const order = await getOrderById(params.order);
   //render according to status of the order
   return (
-    <div>
-      {(order.status === "In-progress")? <CustomerConfirmation order={order}/>:<OrderReceipt order={order}/>}
+    <div className='flex justify-center'>
+      {(order.status === "confirm")? <CustomerConfirmation order={order}/>:<OrderReceipt order={order}/>}
     </div>
   )
 }

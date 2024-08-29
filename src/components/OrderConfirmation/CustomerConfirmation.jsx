@@ -1,10 +1,11 @@
+//Next components
 import Link from 'next/link';
 
 //React confirmation order, render on the user view
 function CustomerConfirmation({order}) {
   return (
-    <div className='flex flex-col gap-2 bg-blue-800 m-2 text-white w-80'>
-        <h3>Confirmation Order # {order.orderNum}</h3>
+    <div className='flex flex-col gap-2 bg-amber-500 bg-opacity-80 m-2 text-black w-80 p-2 rounded-sm'>
+        <h3 className='font-bold text-lg'>Confirmation Order # {order.orderNum}</h3>
         <div>
           <p>Para: {order.customer}</p>
           <p>Dish: {order.dish}</p>
@@ -12,7 +13,7 @@ function CustomerConfirmation({order}) {
           <p>Breakroom: {order.breakroom} </p>
         </div>
         <div>
-          <h4>Politicas de entrega</h4>
+          <h4 className='font-bold'>Politicas de entrega</h4>
           <ol>
             <li>Manda un Screenshot de esta confirmacion al whatsapp ...</li>
             <li>Envia comprobante de pago a la cuenta ....</li>
