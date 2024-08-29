@@ -9,7 +9,8 @@ import { redirect } from "next/navigation";
 //POST
 export async function addOrder(formData, userId){
     let num = 0;
-    let id = ""
+    let id = "";
+    const status = "confirm"
     //try and catch bloks para buscar errores.
     try {
         console.log("Setting order..")
@@ -29,7 +30,7 @@ export async function addOrder(formData, userId){
             breakroom,
             qty,
             disc,
-            status:"In-progress",
+            status,
             note,
             timestamp,
             total
@@ -40,6 +41,7 @@ export async function addOrder(formData, userId){
         await setDoc(doc(db,"users", userId,"history", `order${num+1}`),{
             orderId: docRef.id,
             number: num+1,
+            status
             
         })
         console.log("added to users history..")
