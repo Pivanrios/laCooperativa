@@ -4,7 +4,8 @@ import { useState } from "react"
 //components
 import Image from "next/image"
 import LinkItem from "./LinkItem";
-import Login from "../Login/Login";
+
+import UserLink from "../Login/UserLink";
 
 const links = [
     {
@@ -29,7 +30,7 @@ function Links() {
                 {links.map((link)=>(
                     <LinkItem key={link.title} item={link} setOpen={setOpen}/>
                 ))}
-                <Login setOpen={setOpen}/>
+                <UserLink/>
             </div>
             <Image src={'/icons/MenuIcon.jpg'}
                     alt="menu"
@@ -45,7 +46,7 @@ function Links() {
                                 item={link} 
                                 setOpen={setOpen}/>
                     ))}
-                    <Login setOpen={setOpen}/>
+                    <UserLink/>
                 </div>
             )}
         </div>
