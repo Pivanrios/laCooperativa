@@ -25,7 +25,7 @@ function DishGallery({title}) {
       }<h3 className='text-3xl font-bold'>{title}</h3>
       <div className='container flex sm:flex-row flex-col gap-2 justify-between sm:overflow-x-scroll no-scrollbar sm:whitespace-nowrap '>
       {dishes.map((d)=>{//we map to our dishes and render product component sending the information via prop
-        return <ProductPreview d={d} key={d.id}/>
+        return <ProductPreview d={d} key={`prev${d.id}`}/>
       })}
       </div>
       <Link href={"/platillos"} className='self-end'>mas-----</Link>
