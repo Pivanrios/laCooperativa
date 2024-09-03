@@ -5,8 +5,6 @@ import { useState } from "react"
 import Image from "next/image"
 import LinkItem from "./LinkItem";
 
-import UserLink from "../Login/UserLink";
-
 const links = [
     {
         title:"About",
@@ -14,6 +12,9 @@ const links = [
     },{
         title: "Home",
         path: '/'
+    },{
+        title: "Schedule",
+        path:"/schedule"
     },{
         title: "Platillos",
         path: '/platillos'
@@ -29,8 +30,7 @@ function Links() {
             <div className="gap-1 hidden sm:flex sm:flex-row">
                 {links.map((link)=>(
                     <LinkItem key={link.title} item={link} setOpen={setOpen}/>
-                ))}
-                <UserLink/>
+                ))}  
             </div>
             <Image src={'/icons/MenuIcon.jpg'}
                     alt="menu"
@@ -39,14 +39,13 @@ function Links() {
                     onClick={()=>{setOpen(prev=>!prev)}}
                     className="sm:hidden cursor-pointer"/>
             {open && (
-                <div className="sm:hidden menu flex flex-col absolute top-10 right-0 w-1/3 
+                <div className="sm:hidden menu flex flex-col absolute top-10 w-1/3 
                   items-center gap-2 bg-yellow-500 p-2">
                     {links.map((link)=>(
                         <LinkItem key={link.path} 
                                 item={link} 
                                 setOpen={setOpen}/>
                     ))}
-                    <UserLink/>
                 </div>
             )}
         </div>
