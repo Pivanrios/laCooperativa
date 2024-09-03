@@ -50,7 +50,8 @@ function OrderForCustomer() {
                     name='customer' 
                     id='username' 
                     value={currentUser.displayName}
-                    required/>
+                    required
+                    readOnly/>
         </label>
         <label htmlFor="dish-select">Dish:
             <select name="dish" id="dish-select" 
@@ -105,7 +106,7 @@ function OrderForCustomer() {
                     readOnly/>
         </label>
         <p>points:{total*10}</p>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" readOnly/>
     </form>
     </>
   )

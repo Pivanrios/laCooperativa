@@ -35,7 +35,7 @@ export async function addOrder(formData, userId){
             timestamp,
             total
         })
-        console.log("..document added---->", docRef.id)
+        //console.log("..document added---->", docRef.id)
         id = docRef.id
         //add order number to the history of user
         await setDoc(doc(db,"users", userId,"history", `order${num+1}`),{
@@ -78,7 +78,7 @@ export async function getCustomerOrders(userId) {
         console.log("getting history...")
         const res = await getDocs(collection(db,"users", userId, "history"))
         res.forEach((order)=>history.push(order.data()))
-        console.log("history retrieve",history)
+        console.log("history retrieve")
         return history;
     } catch (error) {
         console.log(error);
