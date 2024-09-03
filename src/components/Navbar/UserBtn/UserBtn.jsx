@@ -28,10 +28,10 @@ function UserBtn() {
 
   return (
     <div>
-        {!currentUser && (<Link href={"/login"} className='btn'>Order Now</Link>)}
+        {!currentUser && (<Link href={"/login"} className='bg-green-700 text-white px-2 py-1 rounded-full'>Order Now</Link>)}
         {currentUser && (
             <>
-            <span className=' rounded-full bg-green-900 hover:bg-green-700 text-white py-1 px-2'
+            <span className=' rounded-full bg-green-700 text-white py-1 px-2'
                     onClick={()=>{(path=="/order" || path=="/profile")? console.log("on ->", path):setOpen(open => !open)}}
                     >{currentUser.displayName}
             </span>
@@ -44,7 +44,7 @@ function UserBtn() {
                             onClick={()=>setOpen(false)}
                             className='hover:bg-yellow-400 p-1'>Order Now</Link>
                     <button onClick={logOut}
-                        className='btn'>Sign Out</button>
+                        className='bg-red-800 py-1 px-2 text-white rounded-full'>Sign Out</button>
                 </div>
             )}
             </>
