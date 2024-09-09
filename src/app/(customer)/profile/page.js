@@ -1,16 +1,9 @@
-import ClientsHistory from '@/src/components/ClientsHistory/ClientsHistory'
 import React from 'react'
 
-//on your profile page you can create and view the status
-// of your orders
-function ProfilePage() {
+function OrderPage() {
   return (
-    <section>
-        Page starts here------
-        list of orders
-        <ClientsHistory/>
-    </section>
+    <div>history</div>
   )
 }
 
-export default ProfilePage
+export default OrderPage

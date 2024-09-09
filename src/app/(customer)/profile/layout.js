@@ -1,3 +1,4 @@
+import Navigation from '@/src/components/Profile/Navigation/Navigation'
 import Profile from '@/src/components/Profile/Profile'
 import React from 'react'
 //the layout should be a list of links that let you personalize
@@ -6,9 +7,7 @@ import React from 'react'
 function ProfileLayout({children}) {
   return (
     <div>
-        <nav>
-        navigation
-        </nav>
+        <Navigation/>
         <div className='h-full w-full'>
         {children}
         </div>
