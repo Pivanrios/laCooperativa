@@ -1,7 +1,7 @@
 "use server"
 //import CRUD methods
 import { db } from "@/firebaseconfig";
-import { collection, addDoc, getDocs, setDoc, doc, getDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, setDoc, doc, getDoc, or } from "firebase/firestore";
 import { redirect } from "next/navigation";
 
 
@@ -96,4 +96,13 @@ export async function getOrderById(id) {
     } catch (error) {
         console.log(error);
     }
+}
+
+//UPDATE ORDER
+export async function toPaid(orderId) {
+    console.log("update status to paid", orderId);
+    //get reference
+    //const order = await doc(db, "orders", orderId);
+    //console.log("order", order);
+
 }
