@@ -1,7 +1,7 @@
 'use client'
 //authentication
 
-import { getOrders } from "@/src/lib/orders";
+import { getOrders, toPaid } from "@/src/lib/orders";
 //UseState hooks
 import { useState, useEffect } from "react";
 
@@ -15,6 +15,7 @@ function OrderList() {
         console.log("Inside use Effect..")
         try {
           let res = await getOrders();
+          console.log(res);
           //sort orders by number
           res.sort((a,b)=>a.orderNum - b.orderNum);
           //set our state
@@ -27,6 +28,9 @@ function OrderList() {
       }
       setData();//invoke
     },[])
+    //handle paid function
+
+
   return (
     <section className="flex flex-col w-full">
       <span className=" justify-between">
@@ -53,7 +57,8 @@ function OrderList() {
                 <p>{order.quantity}</p>
                 <p>{order.status}</p>
                 <span>
-                  <button className=" text-white bg-green-700 px-2 rounded-md hover:bg-green-500">$</button>
+                  <button className=" text-white bg-green-700 px-2 rounded-md hover:bg-green-500"
+                          onClick={()=>{toPaid(order.id)}}>$</button>
                   <button className="text-white bg-red-700 px-2 rounded-md hover:bg-red-500">X</button>
                 </span>
                 </div>

@@ -23,7 +23,7 @@ function OrderReceipt({order}) {
           </ol>
           Gracias por su preferencia! - review
         </div>
-        <Link href={"/profile"} className='btn'>Confirm</Link>
+        <Link href={"/profile/user/history"} className='btn'>Confirm</Link>
     </div>
   )
 }
