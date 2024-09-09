@@ -37,7 +37,7 @@ function UserBtn() {
             </span>
             {open && (
                 <div className={`${(path==="/order" || path==="/profile")?"hidden":""} flex flex-col bg-yellow-500 absolute gap-1 right-0`}>
-                    <Link href={"/profile"}
+                    <Link href={`/profile/${currentUser.displayName}`}
                             onClick={()=>{setOpen(false)}}
                             className='hover:bg-yellow-400 p-1'>Profile</Link>
                     <Link href={"/order"}
