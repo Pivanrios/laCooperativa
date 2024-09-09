@@ -21,7 +21,7 @@ function CustomerConfirmation({order}) {
           </ol>
           Gracias por su preferencia!
         </div>
-        <Link href={"/profile"} className='btn'>Confirm</Link>
+        <Link href={"/profile/user/history"} className='btn'>Confirm</Link>
     </div>
   )
 }

@@ -53,7 +53,7 @@ export async function addOrder(formData, userId){
     }
     //change page 
     //    !-----------Create condition for admin or user------------------!
-    redirect(`/profile/${id}`)
+    redirect(`/order/${id}`)
 }
 //GET ORDERS
 export async function getOrders(){

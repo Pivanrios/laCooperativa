@@ -37,7 +37,7 @@ function ClientsHistory() {
     <h4>History</h4>
     <div className='flex flex-col'> 
       <span>ID | status</span>
-      {load && history.map((o)=>(<Link href={`/profile/${o.orderId}`} 
+      {load && history.map((o)=>(<Link href={`/order/${o.orderId}`} 
                                         className='bg-slate-400 hover:bg-slate-200 '
                                         key={o.orderId}>{o.number}  {o.status}</Link>))}
     </div>
