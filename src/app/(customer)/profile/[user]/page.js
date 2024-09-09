@@ -1,8 +1,11 @@
+import UserInfo from '@/src/components/Profile/UserInfo/UserInfo'
 import React from 'react'
 
 function UserPage() {
   return (
-    <div>UserPage</div>
+   <>
+    <UserInfo/>
+   </>
   )
 }
 
