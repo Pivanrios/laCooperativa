@@ -3,13 +3,16 @@ import CustomerConfirmation from '@/src/components/OrderConfirmation/CustomerCon
 import React from 'react'
 //functions
 import { getOrderById } from '@/src/lib/orders'
+import OrderReceipt from '@/src/components/OrderReceipt/OrderReceipt';
+
 
 async function OrderIdPage({params}) {
     //get order
-    const order = await getOrderById(params.orderId)
+    const order = await getOrderById(params.orderId);
   return (
     <> 
-    <CustomerConfirmation order={order}/>
+    {(order.status == "confirm") && (<CustomerConfirmation order={order}/>)}
+    {(order.status == "paid") && (<OrderReceipt order={order}/>)}
     </>
   )
 }

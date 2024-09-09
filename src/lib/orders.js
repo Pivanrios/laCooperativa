@@ -1,7 +1,7 @@
 "use server"
 //import CRUD methods
 import { db } from "@/firebaseconfig";
-import { collection, addDoc, getDocs, setDoc, doc, getDoc, or } from "firebase/firestore";
+import { collection, addDoc, getDocs, setDoc, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
 import { redirect } from "next/navigation";
 
 
@@ -33,7 +33,8 @@ export async function addOrder(formData, userId){
             status,
             note,
             timestamp,
-            total
+            total,
+            userId
         })
         //console.log("..document added---->", docRef.id)
         id = docRef.id
@@ -63,28 +64,57 @@ export async function getOrders(){
         //GET docs from collection
         const response = await getDocs(collection(db,"orders"))
         console.log("Respuesta...");
-        response.forEach((order)=>orders.push(order.data()))
-        console.log("Orders retrive")
+        response.forEach((order)=>{
+                console.log("Order...")
+                //we create an object
+                let orderData = order.data();
+                orderData.id = order.id //add id property
+                console.log("User data:");
+                orders.push(orderData);//add to the list
+            })
+        console.log("Orders retrive");
         return orders;
     } catch (error) {
         console.log(error);
     }
 }
 //GET USERS ORDERS
-export async function getCustomerOrders(userId) {
+export async function getCusOrders(params) {
+    console.log("getting orders");
     const history = [];
     try {
-        //get collection of orders
-        console.log("getting history...")
-        const res = await getDocs(collection(db,"users", userId, "history"))
-        res.forEach((order)=>history.push(order.data()))
+        const q = query(collection(db, "orders"), where("userId","==", params));
+        //
+        const res = await getDocs(q);
+
+        //
+        res.forEach((order)=>{
+            let orderData = order.data();
+            orderData.id = order.id
+            history.push(orderData);
+        })
         console.log("history retrieve")
         return history;
     } catch (error) {
         console.log(error);
     }
-    
+
 }
+
+// export async function getCustomerOrders(userId) {
+//     const history = [];
+//     try {
+//         //get collection of orders
+//         console.log("getting history...")
+//         const res = await getDocs(collection(db,"users", userId, "history"))
+//         res.forEach((order)=>history.push(order.data()))
+//         console.log("history retrieve")
+//         return history;
+//     } catch (error) {
+//         console.log(error);
+//     }
+    
+// }
 
 //GET ORDER BY ID
 export async function getOrderById(id) {
@@ -102,7 +132,11 @@ export async function getOrderById(id) {
 export async function toPaid(orderId) {
     console.log("update status to paid", orderId);
     //get reference
-    //const order = await doc(db, "orders", orderId);
-    //console.log("order", order);
+    const order =  doc(db, "orders", orderId);
+    console.log("ORDER:");
+    updateDoc(order,{
+        status:"paid"
+    })
+    console.log("order paid")
 
 }
