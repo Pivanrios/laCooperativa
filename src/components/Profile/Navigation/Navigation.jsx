@@ -1,7 +1,12 @@
+'use client'
+//user Authentication react
+import { useAuth } from '@/src/context/AuthContext'
+//nextjs link
 import Link from 'next/link'
-import React from 'react'
 
+//this menu is a list of account settings
 function Navigation() {
+    const {currentUser} = useAuth();
     const list = [
         {
             title:"Set Preferences",
@@ -17,7 +22,7 @@ function Navigation() {
   return (
     <nav className='flex flex-col gap-1'>
     {list.map((e)=>(
-        <Link href={`/profile/${e.path}`}>{e.title}</Link>
+        <Link href={`/profile/${currentUser.displayName}/${e.path}`}>{e.title}</Link>
     ))}
     </nav>
   )
