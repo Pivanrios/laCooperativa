@@ -21,8 +21,9 @@ function Navigation() {
         }]
   return (
     <nav className='flex flex-col gap-1'>
-    {list.map((e)=>(
-        <Link href={`/profile/${currentUser.displayName}/${e.path}`}>{e.title}</Link>
+    {list.map((e,i)=>(
+        <Link href={`/profile/${currentUser.displayName}/${e.path}`}
+                key={i}>{e.title}</Link>
     ))}
     </nav>
   )

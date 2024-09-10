@@ -35,3 +35,14 @@ export async function deleteDish({dishId}){
         console.log(error);
     }
 }
+
+export async function getUserData(params) {
+    try {
+        console.log("getting user info");
+        const res = await getDoc(doc(db, "users", params));
+        console.log("user info:", res.data());
+        return res.data();
+    } catch (error) {
+        console.log(error);
+    }
+}

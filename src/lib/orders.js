@@ -34,7 +34,8 @@ export async function addOrder(formData, userId){
             note,
             timestamp,
             total,
-            userId
+            userId,
+            points: total*50
         })
         //console.log("..document added---->", docRef.id)
         id = docRef.id

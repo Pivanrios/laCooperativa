@@ -1,5 +1,6 @@
 "use client"
 import { useAuth } from '@/src/context/AuthContext'
+import { getUserData } from '@/src/lib/crud';
 import { getCusOrders } from '@/src/lib/orders';
 import Link from 'next/link';
 
@@ -7,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 
 function ClientsHistory() {
   //set states
+    const [points, setPoints] = useState(0)
     const [history, setHistory] = useState([]);
     const [load, setLoad] = useState(false);
     const {currentUser} = useAuth();
@@ -23,6 +25,8 @@ function ClientsHistory() {
           if (history.length == 0){//condition
             res.forEach((e)=>{history.push(e)})
           }
+          const ret = await getUserData(userId);
+          setPoints(ret.points);
           setLoad(true);
         } catch (error) {
           console.log(error);
@@ -35,6 +39,7 @@ function ClientsHistory() {
   return (
     <>
     <h4>History</h4>
+    {load && <span>Points:{points}</span>}
     <div className='flex flex-col'> 
       <span className='flex flex-row justify-around'>
         <h4>ID</h4>
@@ -42,13 +47,19 @@ function ClientsHistory() {
         <h4>DELIVERY</h4>
         <h4>STATUS</h4>
       </span>
-      {load && history.map((o)=>(<Link href={`/order/${o.id}`} 
-                                        className={`${(o.status == "paid")?"bg-green-800":"bg-blue-700"} hover:bg-slate-200 flex flex-row justify-around `}
-                                        key={o.orderId}>
+      <ol>
+      {load && history.map((o,i)=>(
+        <span key={`element${i}`}>
+          <Link href={`/order/${o.id}`} 
+                                        className={`${(o.status == "paid")?"bg-green-800":"bg-blue-700"} hover:bg-slate-200 flex flex-row justify-around text-white`}
+                                        >
                                           <span>{o.orderNum}</span>
                                           <span>{o.dish}</span>
                                           <span>{o.delivery}</span>
-                                          <span>{o.status}</span></Link>))}
+                                          <span>{o.status}</span></Link>
+        </span>                                
+      ))}
+      </ol>
     </div>
     </>
   )

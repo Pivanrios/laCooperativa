@@ -36,15 +36,15 @@ function UserBtn() {
                     > {currentUser.displayName} v
             </span>
             {open && (
-                <div className={`${(path==="/order" || path==="/profile")?"hidden":""} flex flex-col bg-yellow-500 absolute gap-1 right-0`}>
+                <div className={`flex flex-col bg-yellow-500 absolute gap-1 right-0`}>
                     <Link href={`/profile/${currentUser.displayName}`}
                             onClick={()=>{setOpen(false)}}
                             className='hover:bg-yellow-400 p-1'>Profile</Link>
                     <Link href={"/order"}
                             onClick={()=>setOpen(false)}
-                            className='hover:bg-yellow-400 p-1'>Order Now</Link>
+                            className='bg-green-700 p-1 rounded-full text-white'>Order Now</Link>
                     <button onClick={logOut}
-                        className='bg-red-800 py-1 px-2 text-white rounded-full'>Sign Out</button>
+                        className={`${(path==="/order" || path==="/profile")?"hidden":""} bg-red-800 py-1 px-2 text-white rounded-full`}>Sign Out</button>
                 </div>
             )}
             </>

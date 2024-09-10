@@ -1,30 +1,19 @@
 'use client'
 import { useAuth } from '@/src/context/AuthContext';
-import { getDishes } from '@/src/lib/crud'
+//functions
 import { addOrder } from '@/src/lib/orders';
+//react
 import React, { useEffect, useState } from 'react'
 
-function OrderForCustomer() {
+function OrderForCustomer({dishes}) {
     //get user info (name, acumulation, shift)
     const {currentUser} = useAuth();
     //console.log("current user:", currentUser)
     //add states
-    const [dishes, setDishes] = useState([]);
     const [qty, setQty] = useState(0);
     const [dishSelected, setDishSelected] = useState("");
     const [total, setTotal] = useState(0);
-    //get dishes available
-    useEffect(()=>{
-        const setData = async ()=>{
-            try{
-                const res = await getDishes();
-                setDishes(res);
-            }catch{
-                console.log(error);
-            }
-        }
-        setData();
-    },[])
+
     //calculate total
     useEffect(()=>{
         //find price
@@ -39,12 +28,12 @@ function OrderForCustomer() {
     const handleSubmit = async (formData)=>{
         const userId = currentUser.uid
         addOrder(formData, userId);
+        alert("Order submited");
     }
 
   return (
     <>
-    <form action={handleSubmit} className='flex flex-col gap-1'>
-        <h3>Order for user</h3>
+    <form action={handleSubmit} className='flex flex-col gap-1 font-bold'>
         <label htmlFor="">For:
             <input type="text" 
                     name='customer' 
@@ -105,8 +94,8 @@ function OrderForCustomer() {
                     required 
                     readOnly/>
         </label>
-        <p>points:{total*10}</p>
-        <input type="submit" value="Submit" readOnly/>
+        <p>points:{total*50}</p>
+        <input type="submit" value="Submit" readOnly className='btn'/>
     </form>
     </>
   )

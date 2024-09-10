@@ -15,6 +15,7 @@ function CustomerNavbar() {
                                     <Image src={'/icons/logo.png'}
                                     width={30}
                                     height={30}
+                                    alt='cooperativa'
                                     className='hidden sm:list-item rounded-full'/>
                                     LaCooperativa
                               </span>
