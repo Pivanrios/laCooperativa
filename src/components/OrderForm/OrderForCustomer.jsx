@@ -43,8 +43,7 @@ function OrderForCustomer() {
 
   return (
     <>
-    <form action={handleSubmit} className='flex flex-col gap-1'>
-        <h3>Order for user</h3>
+    <form action={handleSubmit} className='flex flex-col gap-1 font-bold'>
         <label htmlFor="">For:
             <input type="text" 
                     name='customer' 
@@ -106,7 +105,7 @@ function OrderForCustomer() {
                     readOnly/>
         </label>
         <p>points:{total*10}</p>
-        <input type="submit" value="Submit" readOnly/>
+        <input type="submit" value="Submit" readOnly className='btn'/>
     </form>
     </>
   )
