@@ -1,13 +1,44 @@
-import { getDishes } from "@/src/lib/crud"
-import { addOrder } from "@/src/lib/orders";
+'use client'
+//functions
+import { addAdminOrder } from "@/src/lib/orders";
+//react hooks
+import React, { useEffect, useState } from "react";
 
-async function OrderForm() {
-    //getDishes
-    const dishes = await getDishes();
-    console.log("dishes:")
+
+
+
+function OrderForm({dishes}) {
+
+    //STATES
+    const [dish, setDish] = useState("");
+    const [qty, setQty] = useState(0);
+    const [total, setTotal] = useState(0);
+
+    //ON CHANCHE
+    useEffect(()=>{
+        const setData = async ()=>{
+            try {
+                if(dish){
+                    const found = dishes.find((d)=> d.name === dish);
+                    //set total
+                    setTotal(found.price*qty);
+                }
+            } catch (error) {
+             console.log(error);   
+            }
+        };
+        setData();
+    },[dish, qty]);
+    //ON SUBMIT
+    const handleSubmit = (formData)=>{
+        
+        addAdminOrder(formData);
+        alert("order submited");
+    }
+
     return (
     <>
-    <form action={addOrder} className="flex flex-col m-1">
+    <form action={handleSubmit} className="flex flex-col m-1">
         <label htmlFor="">Customer:
             <input type="text" 
                     name="customer" 
@@ -20,7 +51,8 @@ async function OrderForm() {
         </label>
         {//use select element to chose dish and breakroom. 
         }<label htmlFor="dish-select">Dish:
-            <select name="dish" id="dish-select" required>
+            <select name="dish" id="dish-select" required
+                onChange={(e)=>{setDish(e.target.value)}}>
                 <option value={""}>------select option------</option>
                 {dishes.map((dish,i)=>(//add key to element
                     <option value={dish.name} key={i}>{dish.name} - ${dish.price}.00</option>
@@ -42,7 +74,8 @@ async function OrderForm() {
             <input type="number"
                     name="qty"
                     id="quantity"
-                    placeholder="0" />
+                    placeholder="0"
+                    onChange={(e)=>{setQty(e.target.value)}} />
         </label>
         <label htmlFor="">Discount:
             <input type="text"
@@ -52,7 +85,7 @@ async function OrderForm() {
         <label htmlFor="">Nota:
             <input type="text" name="note"/>
         </label>
-        <p><strong>Total:</strong></p>
+        <p><strong>Total:{total}</strong></p>
         <button className="btn h-10 sm:h-8">Submit</button>
     </form>
     </>
