@@ -42,13 +42,19 @@ function ClientsHistory() {
         <h4>DELIVERY</h4>
         <h4>STATUS</h4>
       </span>
-      {load && history.map((o)=>(<Link href={`/order/${o.id}`} 
+      <ol>
+      {load && history.map((o,i)=>(
+        <span key={`element${i}`}>
+          <Link href={`/order/${o.id}`} 
                                         className={`${(o.status == "paid")?"bg-green-800":"bg-blue-700"} hover:bg-slate-200 flex flex-row justify-around `}
-                                        key={o.orderId}>
+                                        >
                                           <span>{o.orderNum}</span>
                                           <span>{o.dish}</span>
                                           <span>{o.delivery}</span>
-                                          <span>{o.status}</span></Link>))}
+                                          <span>{o.status}</span></Link>
+        </span>                                
+      ))}
+      </ol>
     </div>
     </>
   )
