@@ -57,6 +57,45 @@ export async function addOrder(formData, userId){
     //    !-----------Create condition for admin or user------------------!
     redirect(`/order/${id}`)
 }
+//POST ADMIN ORDERS
+export async function addAdminOrder(formData) {
+    console.log("adding order...");
+    let num = 0;
+    let id = "";
+    //default
+    const status = "confirm"
+    //Post order -------
+    try {
+        //destrocture order
+        const {customer, delivery, dish, breakroom, qty, disc, note, total} = Object.fromEntries(formData);
+        //get docs for order number
+        const res = await getDocs(collection(db, "orders"));
+        res.forEach(()=>{num++});
+        //timstamp
+        const timestamp = new Date().toDateString();
+        //entried
+        const docRef = await addDoc(collection(db, "orders"),{
+            orderNum: num+1,
+            customer:customer,
+            delivery,
+            dish,
+            breakroom,
+            qty,
+            disc,
+            status,
+            note,
+            timestamp,
+            total,
+
+            points: total*50
+        })
+        const id = docRef.id;
+    } catch (error) {
+        console.log("Error", error);
+    }
+    redirect(`/admin/orders`)
+}
+
 //GET ORDERS
 export async function getOrders(){
     //collection of orders will be store here---
