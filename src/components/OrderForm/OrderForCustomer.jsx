@@ -93,7 +93,7 @@ function OrderForCustomer({dishes}) {
                     required 
                     readOnly/>
         </label>
-        <p>points:{total*10}</p>
+        <p>points:{total*50}</p>
         <input type="submit" value="Submit" readOnly className='btn'/>
     </form>
     </>
