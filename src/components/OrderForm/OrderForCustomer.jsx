@@ -1,30 +1,19 @@
 'use client'
 import { useAuth } from '@/src/context/AuthContext';
-import { getDishes } from '@/src/lib/crud'
+//functions
 import { addOrder } from '@/src/lib/orders';
+//react
 import React, { useEffect, useState } from 'react'
 
-function OrderForCustomer() {
+function OrderForCustomer({dishes}) {
     //get user info (name, acumulation, shift)
     const {currentUser} = useAuth();
     //console.log("current user:", currentUser)
     //add states
-    const [dishes, setDishes] = useState([]);
     const [qty, setQty] = useState(0);
     const [dishSelected, setDishSelected] = useState("");
     const [total, setTotal] = useState(0);
-    //get dishes available
-    useEffect(()=>{
-        const setData = async ()=>{
-            try{
-                const res = await getDishes();
-                setDishes(res);
-            }catch{
-                console.log(error);
-            }
-        }
-        setData();
-    },[])
+
     //calculate total
     useEffect(()=>{
         //find price
