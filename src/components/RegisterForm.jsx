@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext"
 //
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function RegisterForm() {
   //
@@ -28,8 +29,8 @@ function RegisterForm() {
         <h3 className='text-2xl font-bold'>Register</h3>
         <p className=" "> Register with your email to receive cupons with discounts and add reviews to our dishes. </p>
       
-        <button className='btn self-center'
-                onClick={()=>{router.push('/register')}}>Register</button>
+        <Link href={"/register"}
+                className=" btn ">Register</Link>
       </div>}
     </section>
   )
