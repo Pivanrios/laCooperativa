@@ -28,6 +28,7 @@ function OrderForCustomer({dishes}) {
     const handleSubmit = async (formData)=>{
         const userId = currentUser.uid
         addOrder(formData, userId);
+        alert("Order submited");
     }
 
   return (
