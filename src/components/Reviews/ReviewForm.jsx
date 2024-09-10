@@ -7,7 +7,7 @@ import { setDoc, doc, addDoc, collection } from 'firebase/firestore';
 export default function ReviewForm({ productId }) {
   // states
   const [reviewText, setReviewText] = useState('');
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(5);
 
   //on subnmit ----
   const handleSubmit = async (e) => {
@@ -28,7 +28,7 @@ export default function ReviewForm({ productId }) {
         createdAt: new Date().toDateString(),
       })
       setReviewText('');
-      setRating(1);
+      setRating(5);
       alert('Review submitted successfully');
     } catch (error) {
       console.error('Error adding review: ', error);
