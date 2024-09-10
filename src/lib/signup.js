@@ -20,11 +20,13 @@ export async function signUpUser(formData){
       //set username
       await updateProfile(user, {
         displayName: username,
+        photoURL: `https://firebasestorage.googleapis.com/v0/b/la-cooperativa-15c15.appspot.com/o/users%2FScreenshot%202024-06-07%20111141.png?alt=media&token=6bedfaea-220f-4f5f-88b4-5f9f4aa507a4`
       })
       console.log("username successfully added...", user.displayName);
       //set user collection
       const docRef =  await setDoc(doc(db,"users", user.uid),{
-        shift
+        shift,
+        points: 10000//initial points
       })
 
     } catch (error) { //customize errors for debbuging
