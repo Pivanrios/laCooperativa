@@ -85,7 +85,10 @@ function OrderForm({dishes}) {
         <label htmlFor="">Nota:
             <input type="text" name="note"/>
         </label>
-        <p><strong>Total:{total}</strong></p>
+        <label>Total:
+            <input type="number" name="total" value={total}/>
+        </label>
+       
         <button className="btn h-10 sm:h-8">Submit</button>
     </form>
     </>

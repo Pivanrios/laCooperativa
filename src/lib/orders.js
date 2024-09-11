@@ -68,7 +68,7 @@ export async function addAdminOrder(formData) {
     //Post order -------
     try {
         //destrocture order
-        const {customer, delivery, dish, breakroom, qty, disc, note} = Object.fromEntries(formData);
+        const {customer, delivery, dish, breakroom, qty, disc, note,total} = Object.fromEntries(formData);
         //get docs for order number
         console.log("Entries retrieved for", customer);
         //Get docs 
@@ -89,9 +89,9 @@ export async function addAdminOrder(formData) {
             qty,
             note, 
             orderNum: num+1,
-            points:400,
+            points:50*total,
             status: "confirm",
-            timestamp
+            total
         })
         console.log("order added:", doc.id);
         id = doc.id;
