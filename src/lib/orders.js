@@ -97,7 +97,7 @@ export async function addAdminOrder(formData) {
         console.log("Error", error);
     }
     console.log("order added");
-    //redirect(`/order/${id}`)
+    redirect(`/admin/orders/newOrder/${id}`)
 }
 
 //GET ORDERS
