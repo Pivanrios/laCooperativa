@@ -1,7 +1,7 @@
 'use client'
 //authentication
 
-import { getOrders, toPaid } from "@/src/lib/orders";
+import { getOrders, toPaid, deleteOrder } from "@/src/lib/orders";
 //UseState hooks
 import { useState, useEffect } from "react";
 
@@ -59,7 +59,9 @@ function OrderList() {
                 <span>
                   <button className=" text-white bg-green-700 px-2 rounded-md hover:bg-green-500"
                           onClick={()=>{toPaid(order.id)}}>$</button>
-                  <button className="text-white bg-red-700 px-2 rounded-md hover:bg-red-500">X</button>
+                  <button className="text-white bg-red-700 px-2 rounded-md hover:bg-red-500"
+                          onClick={()=>{deleteOrder(order.id)}}
+                          >X</button>
                 </span>
                 </div>
           ))}

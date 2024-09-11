@@ -1,7 +1,7 @@
 "use server"
 //import CRUD methods
 import { db } from "@/firebaseconfig";
-import { collection, addDoc, getDocs, setDoc, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
+import { collection, deleteDoc, addDoc, getDocs, setDoc, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
 import { redirect } from "next/navigation";
 
 
@@ -57,6 +57,51 @@ export async function addOrder(formData, userId){
     //    !-----------Create condition for admin or user------------------!
     redirect(`/order/${id}`)
 }
+//POST ADMIN ORDERS
+export async function addAdminOrder(formData) {
+    console.log("adding order...");
+    let num = 0;
+    let id = "";
+    
+    //default
+    const status = "confirm"
+    //Post order -------
+    try {
+        //destrocture order
+        const {customer, delivery, dish, breakroom, qty, disc, note,total} = Object.fromEntries(formData);
+        //get docs for order number
+        console.log("Entries retrieved for", customer);
+        //Get docs 
+        const res = await getDocs(collection(db, "orders"));
+        console.log("retrieved");
+        res.forEach(()=>{num++});
+        console.log("Number:",num);
+        //timstamp
+        const timestamp = new Date().toDateString();
+        console.log("Timestamp:", timestamp);
+        //entried
+        const doc = await addDoc(collection(db, "orders"),{
+            customer,
+            delivery,
+            disc,
+            dish,
+            breakroom,
+            qty,
+            note, 
+            orderNum: num+1,
+            points:50*total,
+            status: "confirm",
+            total
+        })
+        console.log("order added:", doc.id);
+        id = doc.id;
+    } catch (error) {
+        console.log("Error", error);
+    }
+    console.log("order added");
+    redirect(`/admin/orders/newOrder/${id}`)
+}
+
 //GET ORDERS
 export async function getOrders(){
     //collection of orders will be store here---
@@ -140,4 +185,10 @@ export async function toPaid(orderId) {
     })
     console.log("order paid")
 
+}
+//DELETE ORDER
+export async function deleteOrder(params) {
+ //delete order   
+ console.log("delete order:", params);
+ await deleteDoc(doc(db,"orders", params))
 }

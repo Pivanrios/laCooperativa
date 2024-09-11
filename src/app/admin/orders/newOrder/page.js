@@ -1,10 +1,17 @@
+//components
 import OrderForm from '@/src/components/OrderForm/OrderForm'
+//fucntions
+import { getDishes } from '@/src/lib/crud'
+//react
+import React from 'react'
 
 
-function NewOrderPage() {
+
+async function NewOrderPage() {
+    const dishes = await getDishes();
   return (
     <div>
-        <OrderForm/>
+        <OrderForm dishes={dishes}/>
     </div>
   )
 }

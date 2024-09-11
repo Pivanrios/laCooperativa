@@ -5,11 +5,12 @@ function OrderConfirm({order}) {
   return (
     <div className='flex flex-col gap-2 bg-blue-800 m-2 text-white w-80'>
         <h3>Confirmation Order # {order.orderNum}</h3>
-        <div>
+        <div className='font-bold'>
           <p>Para: {order.customer}</p>
           <p>Dish: {order.dish}</p>
           <p>Entrega: {order.delivery}</p>
           <p>Breakroom: {order.breakroom} </p>
+          <p>total:{order.total}</p>
         </div>
         <div>
           <h4>Politicas de entrega</h4>
