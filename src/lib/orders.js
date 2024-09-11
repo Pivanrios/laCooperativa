@@ -62,38 +62,42 @@ export async function addAdminOrder(formData) {
     console.log("adding order...");
     let num = 0;
     let id = "";
+    
     //default
     const status = "confirm"
     //Post order -------
     try {
         //destrocture order
-        const {customer, delivery, dish, breakroom, qty, disc, note, total} = Object.fromEntries(formData);
+        const {customer, delivery, dish, breakroom, qty, disc, note} = Object.fromEntries(formData);
         //get docs for order number
+        console.log("Entries retrieved for", customer);
+        //Get docs 
         const res = await getDocs(collection(db, "orders"));
+        console.log("retrieved");
         res.forEach(()=>{num++});
+        console.log("Number:",num);
         //timstamp
         const timestamp = new Date().toDateString();
+        console.log("Timestamp:", timestamp);
         //entried
-        const docRef = await addDoc(collection(db, "orders"),{
-            orderNum: num+1,
-            customer:customer,
+        const doc = await addDoc(collection(db, "orders"),{
+            customer,
             delivery,
+            disc,
             dish,
             breakroom,
             qty,
-            disc,
-            status,
-            note,
-            timestamp,
-            total,
-
-            points: total*50
+            note, 
+            orderNum: num++,
+            points:400
         })
-        const id = docRef.id;
+        console.log("order added:", doc.id);
+        id = doc.id;
     } catch (error) {
         console.log("Error", error);
     }
-    redirect(`/admin/orders`)
+    console.log("order added");
+    //redirect(`/order/${id}`)
 }
 
 //GET ORDERS
@@ -179,4 +183,8 @@ export async function toPaid(orderId) {
     })
     console.log("order paid")
 
+}
+//DELETE ORDER
+export async function deleteOrder(params) {
+    
 }
