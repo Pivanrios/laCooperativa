@@ -88,8 +88,10 @@ export async function addAdminOrder(formData) {
             breakroom,
             qty,
             note, 
-            orderNum: num++,
-            points:400
+            orderNum: num+1,
+            points:400,
+            status: "confirm",
+            timestamp
         })
         console.log("order added:", doc.id);
         id = doc.id;
