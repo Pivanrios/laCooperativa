@@ -1,7 +1,7 @@
 "use server"
 //import CRUD methods
 import { db } from "@/firebaseconfig";
-import { collection, addDoc, getDocs, setDoc, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
+import { collection, deleteDoc, addDoc, getDocs, setDoc, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
 import { redirect } from "next/navigation";
 
 
@@ -186,5 +186,7 @@ export async function toPaid(orderId) {
 }
 //DELETE ORDER
 export async function deleteOrder(params) {
-    
+ //delete order   
+ console.log("delete order:", params);
+ await deleteDoc(doc(db,"orders", params))
 }
