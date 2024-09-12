@@ -20,7 +20,7 @@ function DishForm() {
             <input type="number" name="price" id="price" required/>
         </label>
         <label htmlFor="">Cost of Ingredients:
-            <input type="number" name="costs" id="costs" required />
+            <input type="number" name="cost" id="cost" required />
         </label>
         <label htmlFor="">Description:
             <textarea name="desc" id="desc" required></textarea>
@@ -30,9 +30,10 @@ function DishForm() {
         </label>
         <label htmlFor="">Image:
             <button className="text-white bg-blue-700 rounded-full">+</button>
+            <input type="text" name="imagen" id="imagen" />
         </label><br></br>
-        <label htmlFor="">Cost of Ops:
-            <input type="number" name="opsCost" id="opsCost" />
+        <label htmlFor="">Ingredientes:
+            <input type="text" name="ing" id="ing" />
         </label>
         <button className="btn">submit</button>
     </form>
