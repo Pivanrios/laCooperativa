@@ -1,4 +1,5 @@
 import OrderConfirm from '@/src/components/OrderConfirmation/OrderConfirm'
+import OrderReceipt from '@/src/components/OrderReceipt/OrderReceipt';
 import { getOrderById, getOrders } from '@/src/lib/orders';
 import React from 'react'
 
@@ -10,7 +11,8 @@ export default async function ConfirmationPage({params}) {
     
   return (
     <div>
-        <OrderConfirm order={res}/>
+        {(res.status === "paid")? <OrderReceipt order={res}/> : <OrderConfirm order={res}/>}
+        
     </div>
   )
 }

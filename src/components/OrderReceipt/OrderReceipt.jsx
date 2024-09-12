@@ -8,7 +8,7 @@ function OrderReceipt({order}) {
     //states
   
   return (
-    <div className='flex flex-col gap-2 bg-amber-500 bg-opacity-80 m-2 text-black w-80 p-2  rounded-sm'>
+    <div className='flex flex-col gap-2 bg-green-900 text-white bg-opacity-80 m-2 text-black w-80 p-2  rounded-sm'>
         <h3 className='font-bold text-lg'>Recibo de Order # {order.orderNum}</h3>
         <div>
           <p>Para: {order.customer}</p>
@@ -23,7 +23,7 @@ function OrderReceipt({order}) {
           </ol>
           Gracias por su preferencia! - review
         </div>
-        <Link href={"/profile/user/history"} className='btn'>Confirm</Link>
+        <Link href={"/"} className='btn'>Confirm</Link>
     </div>
   )
 }

@@ -8,17 +8,18 @@ export async function addProduct(formData){
     console.log("adding product..")
     try {
         //getValues from input form
-        const {name, price, costs, desc, sides, opsCost} = Object.fromEntries(formData);
+        const {name, price, cost, desc, sides, ing} = Object.fromEntries(formData);
         console.log("entries:",name,price);
         const timestamp = new Date().toDateString();
         //post doc on collection
         const docRef = await addDoc(collection(db, "productos"),{
             name: name,
             price: price,
-            costs: costs,
+            cost: cost,
             desc: desc,
             sides: sides,
-            opsCost:opsCost
+            imagen:"",
+            ing: ing
         })
         console.log("...new dish added")
     } catch (error) {

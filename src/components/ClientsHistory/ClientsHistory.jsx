@@ -39,7 +39,7 @@ function ClientsHistory() {
   return (
     <>
     <h4>History</h4>
-    {load && <span>Points:{points}</span>}
+    {load && <span className='font-bold text-lg'>Points:{points}</span>}
     <div className='flex flex-col'> 
       <span className='flex flex-row justify-around'>
         <h4>ID</h4>
