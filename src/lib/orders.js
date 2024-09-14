@@ -40,13 +40,13 @@ export async function addOrder(formData, userId){
         //console.log("..document added---->", docRef.id)
         id = docRef.id
         //add order number to the history of user
-        await setDoc(doc(db,"users", userId,"history", `order${num+1}`),{
-            orderId: docRef.id,
-            number: num+1,
-            status
+        // await setDoc(doc(db,"users", userId,"history", `order${num+1}`),{
+        //     orderId: docRef.id,
+        //     number: num+1,
+        //     status
             
-        })
-        console.log("added to users history..")
+        // })
+        //console.log("added to users history..")
 
     } catch (error) {
         console.error
