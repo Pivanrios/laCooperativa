@@ -68,8 +68,8 @@ function OrderList() {
                   <button className="text-white bg-red-700 px-2 rounded-md hover:bg-red-500"
                           onClick={()=>{deleteOrder(order.id)}}
                           >X</button>
-                  <button className=" bg-orange-600 px-2 rounded-md hover:bg-red-700"
-                          onClick={()=>{orderDeliver(order.id)}}> D</button>
+                  {(order.status == "confirm") && <button className=" bg-orange-600 px-2 rounded-md hover:bg-red-700"
+                          onClick={()=>{orderDeliver(order.id)}}> D</button>}
                 </span>
                 </div>
           ))}
