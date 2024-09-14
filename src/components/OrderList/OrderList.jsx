@@ -50,9 +50,9 @@ function OrderList() {
         </span>
         <div>
         {orders.map((order)=>(
-              <div className="flex flex-row p-1 gap-5 w-full justify-around" key={order.orderNum}>
+              <div className="flex flex-row w-full justify-around text-white" key={order.orderNum}>
                 <Link href={`/admin/orders/newOrder/${order.id}`} 
-                            className={`${(order.status == "paid"? "bg-green-700" : "bg-blue-800")} flex flex-row justify-between w-full`}>
+                            className={`${(order.status == "paid"? "bg-green-700" : "bg-blue-800")} flex flex-row justify-between w-full p-0.5`}>
                   <p>{order.orderNum}</p>
                   <p>{order.delivery}</p>
                   <p>{order.customer}</p>
