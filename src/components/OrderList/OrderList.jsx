@@ -62,7 +62,7 @@ function OrderList() {
                 </Link>
                 <span>
                   <button className=" text-white bg-green-700 px-2 rounded-md hover:bg-green-500"
-                          onClick={()=>{toPaid(order.id)}}>$</button>
+                          onClick={()=>{toPaid(order.id, order.points, order.userId)}}>$</button>
                   <button className="text-white bg-red-700 px-2 rounded-md hover:bg-red-500"
                           onClick={()=>{deleteOrder(order.id)}}
                           >X</button>
