@@ -196,6 +196,17 @@ export async function toPaid(orderId, newPoints, user) {
     })
 
 }
+//UPDATE ORDER TO DELIVERED
+export async function orderDeliver(orderId) {
+    console.log("Order delivered");
+    //get docref to update
+    const docRef = doc(db, "orders", orderId);
+    //update doc
+    updateDoc(docRef,{
+        status: "delivered"
+    })
+}
+
 //DELETE ORDER
 export async function deleteOrder(params) {
  //delete order   
