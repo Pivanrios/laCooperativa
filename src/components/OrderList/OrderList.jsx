@@ -1,7 +1,7 @@
 'use client'
 //authentication
 
-import { getOrders, toPaid, deleteOrder } from "@/src/lib/orders";
+import { getOrders, toPaid, deleteOrder, orderDeliver } from "@/src/lib/orders";
 //UseState hooks
 import { useState, useEffect } from "react";
 //
@@ -50,9 +50,11 @@ function OrderList() {
         </span>
         <div>
         {orders.map((order)=>(
-              <div className="flex flex-row p-1 gap-5 w-full justify-around" key={order.orderNum}>
+              <div className="flex flex-row w-full justify-around text-white" key={order.orderNum}>
                 <Link href={`/admin/orders/newOrder/${order.id}`} 
-                            className={`${(order.status == "paid"? "bg-green-700" : "bg-blue-800")} flex flex-row justify-between w-full`}>
+                            className={`${(order.status == "paid"? "bg-green-700" : "bg-blue-800")} 
+                                          
+                                          flex flex-row justify-between w-full p-0.5`}>
                   <p>{order.orderNum}</p>
                   <p>{order.delivery}</p>
                   <p>{order.customer}</p>
@@ -61,11 +63,13 @@ function OrderList() {
                   <p>{order.status}</p>
                 </Link>
                 <span>
-                  <button className=" text-white bg-green-700 px-2 rounded-md hover:bg-green-500"
-                          onClick={()=>{toPaid(order.id)}}>$</button>
+                  {(order.status != "paid") &&<button className=" text-white bg-green-700 px-2 rounded-md hover:bg-green-500"
+                          onClick={()=>{toPaid(order.id, order.points, order.userId)}}>$</button>}
                   <button className="text-white bg-red-700 px-2 rounded-md hover:bg-red-500"
                           onClick={()=>{deleteOrder(order.id)}}
                           >X</button>
+                  {(order.status == "confirm") && <button className=" bg-orange-600 px-2 rounded-md hover:bg-red-700"
+                          onClick={()=>{orderDeliver(order.id)}}> D</button>}
                 </span>
                 </div>
           ))}

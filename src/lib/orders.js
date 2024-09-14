@@ -40,13 +40,13 @@ export async function addOrder(formData, userId){
         //console.log("..document added---->", docRef.id)
         id = docRef.id
         //add order number to the history of user
-        await setDoc(doc(db,"users", userId,"history", `order${num+1}`),{
-            orderId: docRef.id,
-            number: num+1,
-            status
+        // await setDoc(doc(db,"users", userId,"history", `order${num+1}`),{
+        //     orderId: docRef.id,
+        //     number: num+1,
+        //     status
             
-        })
-        console.log("added to users history..")
+        // })
+        //console.log("added to users history..")
 
     } catch (error) {
         console.error
@@ -175,17 +175,38 @@ export async function getOrderById(id) {
 }
 
 //UPDATE ORDER
-export async function toPaid(orderId) {
+export async function toPaid(orderId, newPoints, user) {
     console.log("update status to paid", orderId);
     //get reference
     const order =  doc(db, "orders", orderId);
-    console.log("ORDER:");
+    console.log("ORDER points:", newPoints);
+    //update order status
     updateDoc(order,{
         status:"paid"
     })
-    console.log("order paid")
+    console.log("order paid");
+    //get user doc reference and data
+    const docRef = doc(db,"users", user);
+    const userData = await getDoc(docRef);
+    const userPoitns = userData.data().points;
+    console.log("user retrieve", userPoitns);
+    //update user points
+    updateDoc(docRef, {
+        points: userPoitns+newPoints
+    })
 
 }
+//UPDATE ORDER TO DELIVERED
+export async function orderDeliver(orderId) {
+    console.log("Order delivered");
+    //get docref to update
+    const docRef = doc(db, "orders", orderId);
+    //update doc
+    updateDoc(docRef,{
+        status: "delivered"
+    })
+}
+
 //DELETE ORDER
 export async function deleteOrder(params) {
  //delete order   
