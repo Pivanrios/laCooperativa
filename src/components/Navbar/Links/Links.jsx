@@ -42,7 +42,7 @@ function Links() {
                                 item={link} 
                                 setOpen={setOpen}/>
                     ))}
-                    <Menu/>
+                    <Menu />
                 </div>
             )}
         </div>
