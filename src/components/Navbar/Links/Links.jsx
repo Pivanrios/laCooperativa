@@ -42,6 +42,7 @@ function Links() {
                                 item={link} 
                                 setOpen={setOpen}/>
                     ))}
+                    <Menu/>
                 </div>
             )}
         </div>
