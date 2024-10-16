@@ -4,6 +4,7 @@ import { useState } from "react"
 //components
 import Image from "next/image"
 import LinkItem from "./LinkItem";
+import Menu from "./Menu";
 
 const links = [
     {
@@ -12,12 +13,6 @@ const links = [
     },{
         title: "Home",
         path: '/'
-    },{
-        title: "Schedule",
-        path:"/schedule"
-    },{
-        title: "Platillos",
-        path: '/platillos'
     }
 ]
 
@@ -31,6 +26,7 @@ function Links() {
                 {links.map((link)=>(
                     <LinkItem key={link.title} item={link} setOpen={setOpen}/>
                 ))}  
+                <Menu/>
             </div>
             <Image src={'/icons/MenuIcon.jpg'}
                     alt="menu"
