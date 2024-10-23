@@ -15,6 +15,7 @@ export default function SignIn() {
     const [error, setError] = useState("");
     //import functions from context
     const { signIn } = useAuth();
+    const {resetPassword} = useAuth();
     //router to change route on website
     const router = useRouter();
     //funtcion
@@ -27,8 +28,8 @@ export default function SignIn() {
                 console.log("successfully sign in");
                 router.push('/order')
             }catch (error) {
-                setError("Failed to sign in");
-                console.log(error.code)
+                setError("email o password incorrecto");
+                console.log(error.code);
             }
     }
     return (
@@ -52,7 +53,7 @@ export default function SignIn() {
             </label>
             {error && (<>
                 <p>{error}</p>
-                <span className="font-light text-xs">Olvidaste tu contrasena? <Link href={"/updatePass"} className="text-blue-700">Recuperar</Link> </span>
+                <p className="font-light text-xs">Olvidaste tu contrasena? <span onClick={()=>{resetPassword(email)}} className="text-blue-700 hover:cursor-pointer">Recuperar</span> </p>
                 </>
                 )}
             
