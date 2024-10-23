@@ -4,7 +4,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 //firebase authentication and functions
 import { auth } from "@/firebaseconfig";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth";
 
 //create context
 const AuthContext = createContext();
@@ -37,10 +37,22 @@ export function AuthProvider({ children }) {
         //console.log("on signin function", email)
         return signInWithEmailAndPassword(auth, email, password);
     };
+    //reset password link
+    const resetPassword = (email)=>{
+        try {
+            console.log("reseting password")
+            sendPasswordResetEmail(auth, email);
+        } catch (error) {
+         console.log(error)   
+        }
+        console.log("email sent")
+    }
+
     //context  values to pass by
     const value = {
         currentUser,
-        signIn
+        signIn,
+        resetPassword
     };
     return (
         <AuthContext.Provider value={value}>

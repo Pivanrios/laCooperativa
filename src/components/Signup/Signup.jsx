@@ -1,6 +1,7 @@
 'use client'
 //function to register user on db
 import { signUpUser } from "@/src/lib/signup"
+import Image from "next/image";
 import Link from "next/link";
 //react hooks
 import { useEffect, useState } from "react"
@@ -10,15 +11,14 @@ function Signup() {
   const [password, setPassword] = useState(""); //password
   const [passVer, setPassVer] = useState(""); //password verification
   const [valid, setValid] = useState(false); // bool that allows to continue
+  const [good, setGood] = useState(false);
   //use effect
   useEffect(()=>{
-    if(password === passVer){
-      //if passwords are the same, the submit button will appear.
-      setValid(true);
-    }else{
-      setValid(false);
-    }
-  },[passVer]);
+    //check if password is longer than 6 digits
+    (password.length >  6)? setGood(true) : setGood(false);
+    //verify if passwords are the same
+    (password == passVer && passVer.length > 0)? setValid(true) : setValid(false);
+  },[passVer, password]);
   return (
     <section className='container flex flex-col items-center gap-1 p-2' >
       <div id='register-wrapper'
@@ -43,7 +43,11 @@ function Signup() {
                       className="w-full"  
                       placeholder="email@dress.com"/>
             </label>
-            <label>Password: 
+            <label><span className="flex flex-row">Password: { good && <Image src={"/icons/greenmark.jpg"}
+                                              alt="icon"
+                                              width={15}
+                                              height={1}
+                                              className=" rounded-full"/>}</span>
               <input type="password" 
                       required 
                       className="w-full" 
@@ -52,13 +56,17 @@ function Signup() {
                       placeholder="more than 6 letters"
                       onChange={(e)=>setPassword(e.target.value)}/>
             </label>
-            <label>Password: 
+            <label> <span className="flex flex-row">Password: {valid &&  <Image src={"/icons/greenmark.jpg"}
+                                              alt="icon"
+                                              width={15}
+                                              height={1}
+                                              className=" rounded-full"/>}</span>
               <input type="password" 
                       required 
                       className="w-full" 
                       name="password-verify" 
                       id="password-veryfy"
-                      placeholder="same as arriba ^"
+                      placeholder="confirmar contrasena"
                       onChange={(e)=>setPassVer(e.target.value)}/>
             </label>
             <label htmlFor=""> Shift:
