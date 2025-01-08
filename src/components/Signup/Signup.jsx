@@ -43,7 +43,7 @@ function Signup() {
                       className="w-full"  
                       placeholder="email@dress.com"/>
             </label>
-            <label><span className="flex flex-row">Password: { good && <Image src={"/icons/greenmark.jpg"}
+            <label><span className="flex flex-row">Password: { (!good)? <>x</>: <Image src={"/icons/greenmark.jpg"}
                                               alt="icon"
                                               width={15}
                                               height={1}
@@ -56,7 +56,7 @@ function Signup() {
                       placeholder="more than 6 letters"
                       onChange={(e)=>setPassword(e.target.value)}/>
             </label>
-            <label> <span className="flex flex-row">Password: {valid &&  <Image src={"/icons/greenmark.jpg"}
+            <label> <span className="flex flex-row">Password: { (!valid)? <>x</> : <Image src={"/icons/greenmark.jpg"}
                                               alt="icon"
                                               width={15}
                                               height={1}
